@@ -1,0 +1,27 @@
+{
+	"extends": ["stylelint-config-recommended", "stylelint-config-prettier", "stylelint-config-sass-guidelines"],
+	"plugins": ["stylelint-scss", "stylelint-order"],
+	"rules": {
+		"indentation": 4,
+		"max-nesting-depth": 4,
+        "scss/at-import-partial-extension-blacklist": null,
+        "function-no-unknown": null,
+		
+		"order/order": [
+			{
+				"type": "at-rule",
+				"hasBlock": false
+			},
+			"declarations",
+			{
+				"type": "at-rule",
+				"name": "include",
+				"hasBlock": true
+			},
+			{
+				"type": "at-rule",
+				"hasBlock": true
+			}
+		]
+	}
+}
