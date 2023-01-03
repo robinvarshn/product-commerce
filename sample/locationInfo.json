@@ -1,0 +1,10 @@
+{
+    "infoboxesWithPushPins": [
+        {
+            "location": [13.0827, 80.2707],
+            "addHandler": "mouseover",
+            "infoboxOption": { "title": "Chennai", "description": "Infobox" },
+            "pushPinOption": { "title": "", "description": "Pushpin" }
+        }
+    ]
+}

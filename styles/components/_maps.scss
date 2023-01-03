@@ -1,0 +1,16 @@
+@import '../constants/configs';
+
+.bing {
+    &-maps {
+        border: 1px solid $color-global-black;
+        float: left;
+        height: 40rem;
+        margin: 0.5rem;
+        padding: 1rem;
+        width: 100%;
+
+        @media (min-width: $media-phone-breakpoint) {
+            width: 40rem;
+        }
+    }
+}
