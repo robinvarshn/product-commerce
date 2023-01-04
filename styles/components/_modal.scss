@@ -1,0 +1,49 @@
+@import '../constants/configs';
+
+.modal {
+    background-color: $color-global-white;
+    bottom: -1px;
+    left: -1px;
+    padding: 2rem;
+    position: absolute;
+    right: -1px;
+    top: -1px;
+
+    &-content {
+        bottom: auto;
+        left: 50%;
+        margin-right: -50%;
+        position: absolute;
+        right: auto;
+        top: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    &-close {
+        all: unset;
+        cursor: pointer;
+        font-size: $u-heading-1;
+        float: right;
+        padding: 0 2.5rem;
+
+        @media (min-width: $media-phone-breakpoint) {
+            font-size: $u-heading-1 + $u-heading-1;
+            float: right;
+            padding: 0 4rem;
+        }
+
+        &::after {
+            content: '\00d7';
+        }
+    }
+}
+
+.overlay {
+    background-color: $color-global-white;
+    bottom: 0;
+    left: 0;
+    position: fixed;
+    right: 0;
+    top: 0;
+    z-index: 100;
+}

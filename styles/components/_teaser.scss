@@ -1,0 +1,35 @@
+@import '../constants/configs';
+
+.teaser {
+    .cmp-teaser {
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        margin: 0 0 5rem;
+
+        &__image {
+            height: 20rem;
+            position: relative;
+            width: 98%;
+
+            @media (min-width: $media-phone-breakpoint) {
+                height: 65rem;
+                width: 65%;
+            }
+        }
+
+        &__divider {
+            &::before {
+                border: 0 solid transparent;
+                border-right-color: $color-global-white;
+                border-right-width: 100vw;
+                border-top-color: transparent;
+                border-top-width: 5vw;
+                bottom: 0;
+                content: '';
+                left: 0;
+                position: absolute;
+            }
+        }
+    }
+}

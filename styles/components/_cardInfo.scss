@@ -1,0 +1,41 @@
+@import '../globalImports.scss';
+
+.card {
+    &-info {
+        align-items: center;
+        box-shadow: 0 4px 14px rgb(0 0 0 / 25%);
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+        padding: 3rem;
+
+        &:hover {
+            box-shadow: 0 0 64px rgb(0 0 0 / 22%);
+        }
+
+        &__icon {
+            height: 6rem;
+            width: 6rem;
+
+            @media (min-width: $media-phone-breakpoint) {
+                height: 8rem;
+                width: 8rem;
+            }
+        }
+
+        &__header {
+            font-size: $u-heading-6;
+            font-weight: 800;
+            text-align: center;
+
+            @media (min-width: $media-phone-breakpoint) {
+                font-size: $u-heading-3;
+            }
+        }
+    }
+
+    &-subInfo {
+        font-size: $u-medium-text;
+        font-weight: 500;
+    }
+}

@@ -1,9 +1,16 @@
 {
     "infoboxesWithPushPins": [
         {
-            "location": [13.0827, 80.2707],
+            "location": [27.900383, 78.072281],
             "addHandler": "mouseover",
-            "infoboxOption": { "title": "Chennai", "description": "Infobox" },
+            "infoboxOption": { "title": "Aligarh", "description": "Infobox" },
+            "pushPinOption": { "title": "", "description": "Pushpin" }
+        },
+
+        {
+            "location": [27.800383, 78.072281],
+            "addHandler": "mouseover",
+            "infoboxOption": { "title": "Besma", "description": "Infobox" },
             "pushPinOption": { "title": "", "description": "Pushpin" }
         }
     ]

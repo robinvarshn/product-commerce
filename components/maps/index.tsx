@@ -35,7 +35,7 @@ const BingMaps = ({ mapsApiKey }: BingMapsProps): JSX.Element => {
             {lat && lng && (
                 <div className="bing-maps">
                     <ReactBingmaps
-                        zoom={15}
+                        zoom={10}
                         id="maps"
                         center={[lat, lng]}
                         bingmapKey={mapsApiKey}

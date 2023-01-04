@@ -17,7 +17,8 @@
         "baseUrl": ".",
         "paths": {
             "@/maps": ["components/maps/config"],
-            "@styles/*": ["styles/components/*"]
+            "@styles/*": ["styles/components/*"],
+            "@layout/*": ["styles/layout/*"]
         }
     },
     "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "aemHeadless.js", "aemHeadless.js"],

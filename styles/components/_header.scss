@@ -1,0 +1,64 @@
+@import '../constants/configs';
+
+.header {
+    &__container {
+        background-color: $color-global-white;
+        position: fixed;
+        top: 0;
+        width: 100%;
+        z-index: 10;
+    }
+
+    &__list {
+        display: flex;
+        justify-content: center;
+        list-style-type: none;
+        padding: 0;
+    }
+
+    &__item {
+        display: flex;
+        flex: 0 0 100%;
+        flex-direction: row;
+        position: relative;
+
+        &:hover {
+            transform: scale(1.05);
+        }
+
+        &::before,
+        &::after {
+            border-bottom: 0.3rem solid $color-global-black;
+            content: '';
+            flex: 1 1;
+            margin: auto;
+        }
+    }
+
+    &__logo {
+        cursor: pointer;
+        height: 8rem;
+        object-fit: cover;
+        position: relative;
+        width: 8rem;
+
+        @media (min-width: $media-phone-breakpoint) {
+            height: 15rem;
+            width: 15rem;
+        }
+    }
+
+    &__image {
+        animation: rotation 15s infinite linear;
+
+        @keyframes rotation {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(359deg);
+            }
+        }
+    }
+}

@@ -28,11 +28,14 @@
         "fs-extra": "^11.1.0",
         "mini-css-extract-plugin": "^2.7.2",
         "next": "13.1.1",
+        "nextjs-progressbar": "0.0.16",
         "node-sass-glob-importer": "^5.3.2",
         "postcss-loader": "^7.0.1",
         "prettier": "^2.8.1",
         "react": "18.2.0",
         "react-dom": "18.2.0",
+        "react-modal": "^3.16.1",
+        "react-speech-recognition": "^3.10.0",
         "sass": "^1.54.4",
         "sass-loader": "^13.0.2",
         "stylelint": "^14.9.1",
@@ -47,6 +50,9 @@
     },
     "devDependencies": {
         "@types/fs-extra": "^9.0.13",
+        "@types/react-modal": "^3.13.1",
+        "@types/react-speech-recognition": "^3.9.0",
+        "@types/regenerator-runtime": "^0.13.1",
         "ajv": "^7.2.4",
         "eslint-config-prettier": "^8.6.0"
     }

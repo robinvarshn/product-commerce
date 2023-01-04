@@ -1,0 +1,14 @@
+[
+    {
+        "cardText": "By Voice Assistance",
+        "cardSubText": "Powered By G-Speech",
+        "cardIcon": "/mike.png",
+        "type": "voice"
+    },
+    {
+        "cardText": "By Object Detection",
+        "cardSubText": "Powered By Coco-SSD Model",
+        "cardIcon": "/camera.png",
+        "type": "object"
+    }
+]

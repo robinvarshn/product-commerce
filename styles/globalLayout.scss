@@ -12,7 +12,7 @@ html {
 }
 
 body {
-    background: $primary-background;
+    background: $color-global-grey-1;
     color: $color-text;
     font-family: $font-family;
     font-size: $primary-body-font-size;
@@ -57,3 +57,10 @@ button {
     cursor: $primary-cursor;
 }
 
+.main-content {
+    margin-top: 9rem;
+
+    @media (min-width: $media-phone-breakpoint) {
+        margin-top: 17rem;
+    }
+}

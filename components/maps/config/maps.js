@@ -63,7 +63,8 @@ function _inherits(subClass, superClass) {
     subClass.prototype = Object.create(superClass && superClass.prototype, {
         constructor: { value: subClass, enumerable: false, writable: true, configurable: true },
     });
-    if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : (subClass.__proto__ = superClass);
+    if (superClass)
+        Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : (subClass.__proto__ = superClass);
 }
 
 var map = {},
@@ -78,7 +79,10 @@ var ReactBingmaps = (function (_Component) {
     function ReactBingmaps(props) {
         _classCallCheck(this, ReactBingmaps);
 
-        var _this = _possibleConstructorReturn(this, (ReactBingmaps.__proto__ || Object.getPrototypeOf(ReactBingmaps)).call(this, props));
+        var _this = _possibleConstructorReturn(
+            this,
+            (ReactBingmaps.__proto__ || Object.getPrototypeOf(ReactBingmaps)).call(this, props),
+        );
 
         if (window && window.document.querySelector('script[src="' + scriptURL + '"]') === null) {
             _this.loadScript(scriptURL);
@@ -171,7 +175,11 @@ var ReactBingmaps = (function (_Component) {
                     this.setInfoboxes(nextProps.infoboxes, 'infoboxes', mapReference);
                 }
                 if (this.props.infoboxesWithPushPins !== nextProps.infoboxesWithPushPins) {
-                    this.setInfoboxesWithPushPins(nextProps.infoboxesWithPushPins, 'infoboxesWithPushPins', mapReference);
+                    this.setInfoboxesWithPushPins(
+                        nextProps.infoboxesWithPushPins,
+                        'infoboxesWithPushPins',
+                        mapReference,
+                    );
                 }
                 if (this.props.regularPolygons !== nextProps.regularPolygons) {
                     this.createRegularPolygons(nextProps.regularPolygons, mapReference);
@@ -255,13 +263,19 @@ var ReactBingmaps = (function (_Component) {
                     var isBirdEyeAvailable = false;
                     if (mapTypeId === 'birdseye' && center && center[0] && center[1]) {
                         var location = new Microsoft.Maps.Location(center[0], center[1]);
-                        Microsoft.Maps.getIsBirdseyeAvailable(location, Microsoft.Maps.Heading[heading], function (onResponse) {
-                            isBirdEyeAvailable = onResponse;
-                        });
+                        Microsoft.Maps.getIsBirdseyeAvailable(
+                            location,
+                            Microsoft.Maps.Heading[heading],
+                            function (onResponse) {
+                                isBirdEyeAvailable = onResponse;
+                            },
+                        );
                     }
                     if (mapTypeId) {
                         map[mapReference].setView({
-                            mapTypeId: isBirdEyeAvailable ? Microsoft.Maps.MapTypeId.birdseye : Microsoft.Maps.MapTypeId[mapTypeId],
+                            mapTypeId: isBirdEyeAvailable
+                                ? Microsoft.Maps.MapTypeId.birdseye
+                                : Microsoft.Maps.MapTypeId[mapTypeId],
                         });
                     }
                 }
@@ -320,8 +334,15 @@ var ReactBingmaps = (function (_Component) {
                         }
                     }
                     for (var pushPinIndex = 0; pushPinIndex < pushPins.length; pushPinIndex++) {
-                        if (pushPins[pushPinIndex].location && pushPins[pushPinIndex].location[0] && pushPins[pushPinIndex].location[1]) {
-                            var location = new Microsoft.Maps.Location(pushPins[pushPinIndex].location[0], pushPins[pushPinIndex].location[1]);
+                        if (
+                            pushPins[pushPinIndex].location &&
+                            pushPins[pushPinIndex].location[0] &&
+                            pushPins[pushPinIndex].location[1]
+                        ) {
+                            var location = new Microsoft.Maps.Location(
+                                pushPins[pushPinIndex].location[0],
+                                pushPins[pushPinIndex].location[1],
+                            );
                             var option = pushPins[pushPinIndex].option ? pushPins[pushPinIndex].option : null;
                             if (option && option.anchor && option.anchor[0] && option.anchor[1]) {
                                 option.anchor = new Microsoft.Maps.Point(option.anchor[0], option.anchor[1]);
@@ -334,7 +355,11 @@ var ReactBingmaps = (function (_Component) {
                                     pushPins[pushPinIndex].addHandler.type,
                                     function (callback, data) {
                                         this.MakeCallback(callback, data);
-                                    }.bind(this, pushPins[pushPinIndex].addHandler.callback, pushPins[pushPinIndex].addHandler.callbackData),
+                                    }.bind(
+                                        this,
+                                        pushPins[pushPinIndex].addHandler.callback,
+                                        pushPins[pushPinIndex].addHandler.callbackData,
+                                    ),
                                 );
                             }
                         }
@@ -352,8 +377,15 @@ var ReactBingmaps = (function (_Component) {
                     infobox[infoboxCreateType] = [];
                     if (infoboxes) {
                         for (var infoboxIndex = 0; infoboxIndex < infoboxes.length; infoboxIndex++) {
-                            if (infoboxes[infoboxIndex].location && infoboxes[infoboxIndex].location[0] && infoboxes[infoboxIndex].location[1]) {
-                                var location = new Microsoft.Maps.Location(infoboxes[infoboxIndex].location[0], infoboxes[infoboxIndex].location[1]);
+                            if (
+                                infoboxes[infoboxIndex].location &&
+                                infoboxes[infoboxIndex].location[0] &&
+                                infoboxes[infoboxIndex].location[1]
+                            ) {
+                                var location = new Microsoft.Maps.Location(
+                                    infoboxes[infoboxIndex].location[0],
+                                    infoboxes[infoboxIndex].location[1],
+                                );
                                 var option = infoboxes[infoboxIndex] ? infoboxes[infoboxIndex].option : null;
                                 if (option.htmlContent) {
                                     option.htmlContent = _server2.default.renderToStaticMarkup(option.htmlContent);
@@ -366,7 +398,11 @@ var ReactBingmaps = (function (_Component) {
                                         infoboxes[infoboxIndex].addHandler.type,
                                         function (callback, data) {
                                             this.MakeCallback(callback, data);
-                                        }.bind(this, infoboxes[infoboxIndex].addHandler.callback, infoboxes[infoboxIndex].addHandler.callbackData),
+                                        }.bind(
+                                            this,
+                                            infoboxes[infoboxIndex].addHandler.callback,
+                                            infoboxes[infoboxIndex].addHandler.callbackData,
+                                        ),
                                     );
                                 }
                             }
@@ -397,7 +433,11 @@ var ReactBingmaps = (function (_Component) {
 
                     //Add Infoboxes with Pushpins
                     if (infoboxesWithPushPins) {
-                        for (var infoboxWithPushPinIndex = 0; infoboxWithPushPinIndex < infoboxesWithPushPins.length; infoboxWithPushPinIndex++) {
+                        for (
+                            var infoboxWithPushPinIndex = 0;
+                            infoboxWithPushPinIndex < infoboxesWithPushPins.length;
+                            infoboxWithPushPinIndex++
+                        ) {
                             if (infoboxesWithPushPins[infoboxWithPushPinIndex].location) {
                                 //Set Location
                                 var location = new Microsoft.Maps.Location(
@@ -412,7 +452,9 @@ var ReactBingmaps = (function (_Component) {
 
                                 //ConvertToHtml if Obj
                                 if (infoboxOption.htmlContent) {
-                                    infoboxOption.htmlContent = _server2.default.renderToStaticMarkup(infoboxOption.htmlContent);
+                                    infoboxOption.htmlContent = _server2.default.renderToStaticMarkup(
+                                        infoboxOption.htmlContent,
+                                    );
                                 }
 
                                 //If Handler added, initially hide Infobox
@@ -427,7 +469,10 @@ var ReactBingmaps = (function (_Component) {
 
                                 //Initilize if anchor for Pushpin
                                 if (pushPinOption.anchor && pushPinOption.anchor[0] && pushPinOption.anchor[1]) {
-                                    pushPinOption.anchor = new Microsoft.Maps.Point(pushPinOption.anchor[0], pushPinOption.anchor[1]);
+                                    pushPinOption.anchor = new Microsoft.Maps.Point(
+                                        pushPinOption.anchor[0],
+                                        pushPinOption.anchor[1],
+                                    );
                                 }
 
                                 //Set Infobox
@@ -444,7 +489,8 @@ var ReactBingmaps = (function (_Component) {
                                         }.bind(
                                             this,
                                             infoboxesWithPushPins[infoboxWithPushPinIndex].infoboxAddHandler.callback,
-                                            infoboxesWithPushPins[infoboxWithPushPinIndex].infoboxAddHandler.callbackData,
+                                            infoboxesWithPushPins[infoboxWithPushPinIndex].infoboxAddHandler
+                                                .callbackData,
                                         ),
                                     );
                                 }
@@ -463,7 +509,8 @@ var ReactBingmaps = (function (_Component) {
                                         }.bind(
                                             this,
                                             infoboxesWithPushPins[infoboxWithPushPinIndex].pushPinAddHandler.callback,
-                                            infoboxesWithPushPins[infoboxWithPushPinIndex].pushPinAddHandler.callbackData,
+                                            infoboxesWithPushPins[infoboxWithPushPinIndex].pushPinAddHandler
+                                                .callbackData,
                                         ),
                                     );
                                 }
@@ -551,7 +598,11 @@ var ReactBingmaps = (function (_Component) {
                             map[mapReference].entities.removeAt(i);
                         }
                     }
-                    for (var regularPolygonIndex = 0; regularPolygonIndex < regularPolygons.length; regularPolygonIndex++) {
+                    for (
+                        var regularPolygonIndex = 0;
+                        regularPolygonIndex < regularPolygons.length;
+                        regularPolygonIndex++
+                    ) {
                         if (
                             regularPolygons[regularPolygonIndex].center &&
                             regularPolygons[regularPolygonIndex].center[0] &&
@@ -562,9 +613,15 @@ var ReactBingmaps = (function (_Component) {
                                     regularPolygons[regularPolygonIndex].center[0],
                                     regularPolygons[regularPolygonIndex].center[1],
                                 );
-                                var radius = regularPolygons[regularPolygonIndex].radius ? regularPolygons[regularPolygonIndex].radius : 0;
-                                var points = regularPolygons[regularPolygonIndex].points ? regularPolygons[regularPolygonIndex].points : 0;
-                                var option = regularPolygons[regularPolygonIndex].option ? regularPolygons[regularPolygonIndex].option : {};
+                                var radius = regularPolygons[regularPolygonIndex].radius
+                                    ? regularPolygons[regularPolygonIndex].radius
+                                    : 0;
+                                var points = regularPolygons[regularPolygonIndex].points
+                                    ? regularPolygons[regularPolygonIndex].points
+                                    : 0;
+                                var option = regularPolygons[regularPolygonIndex].option
+                                    ? regularPolygons[regularPolygonIndex].option
+                                    : {};
 
                                 Microsoft.Maps.loadModule('Microsoft.Maps.SpatialMath', function () {
                                     var locations = Microsoft.Maps.SpatialMath.getRegularPolygon(
@@ -627,33 +684,40 @@ var ReactBingmaps = (function (_Component) {
                             );
                         });
                     } else {
-                        Microsoft.Maps.loadModule(['Microsoft.Maps.SpatialDataService', 'Microsoft.Maps.Search'], function () {
-                            var searchManager = new Microsoft.Maps.Search.SearchManager(map[mapReference]);
-                            var geocodeRequest = {
-                                where: search,
-                                callback: function callback(geocodeResult) {
-                                    if (geocodeResult && geocodeResult.results && geocodeResult.results.length > 0) {
-                                        map[mapReference].setView({ bounds: geocodeResult.results[0].bestView });
-                                        Microsoft.Maps.SpatialDataService.GeoDataAPIManager.getBoundary(
-                                            geocodeResult.results[0].location,
-                                            geoDataRequestOptions,
-                                            map[mapReference],
-                                            function (data) {
-                                                if (data.results && data.results.length > 0) {
-                                                    map[mapReference].entities.push(data.results[0].Polygons);
-                                                }
-                                            },
-                                            polygonStyle,
-                                            function errCallback(networkStatus, statusMessage) {
-                                                console.log(networkStatus);
-                                                console.log(statusMessage);
-                                            },
-                                        );
-                                    }
-                                },
-                            };
-                            searchManager.geocode(geocodeRequest);
-                        });
+                        Microsoft.Maps.loadModule(
+                            ['Microsoft.Maps.SpatialDataService', 'Microsoft.Maps.Search'],
+                            function () {
+                                var searchManager = new Microsoft.Maps.Search.SearchManager(map[mapReference]);
+                                var geocodeRequest = {
+                                    where: search,
+                                    callback: function callback(geocodeResult) {
+                                        if (
+                                            geocodeResult &&
+                                            geocodeResult.results &&
+                                            geocodeResult.results.length > 0
+                                        ) {
+                                            map[mapReference].setView({ bounds: geocodeResult.results[0].bestView });
+                                            Microsoft.Maps.SpatialDataService.GeoDataAPIManager.getBoundary(
+                                                geocodeResult.results[0].location,
+                                                geoDataRequestOptions,
+                                                map[mapReference],
+                                                function (data) {
+                                                    if (data.results && data.results.length > 0) {
+                                                        map[mapReference].entities.push(data.results[0].Polygons);
+                                                    }
+                                                },
+                                                polygonStyle,
+                                                function errCallback(networkStatus, statusMessage) {
+                                                    console.log(networkStatus);
+                                                    console.log(statusMessage);
+                                                },
+                                            );
+                                        }
+                                    },
+                                };
+                                searchManager.geocode(geocodeRequest);
+                            },
+                        );
                     }
                 }
             },
@@ -689,12 +753,18 @@ var ReactBingmaps = (function (_Component) {
                         polylineLocationIndex++
                     ) {
                         polylineLocationsAsMapLocations.push(
-                            new Microsoft.Maps.Location(polylineLocations[polylineLocationIndex][0], polylineLocations[polylineLocationIndex][1]),
+                            new Microsoft.Maps.Location(
+                                polylineLocations[polylineLocationIndex][0],
+                                polylineLocations[polylineLocationIndex][1],
+                            ),
                         );
                     }
 
                     if (polylineLocationsAsMapLocations.length !== 0) {
-                        var polylineObject = new Microsoft.Maps.Polyline(polylineLocationsAsMapLocations, polylineOption);
+                        var polylineObject = new Microsoft.Maps.Polyline(
+                            polylineLocationsAsMapLocations,
+                            polylineOption,
+                        );
                         map[mapReference].entities.push(polylineObject);
                     }
                 }
@@ -718,7 +788,8 @@ var ReactBingmaps = (function (_Component) {
                         }
                         if (renderOptions) {
                             if (renderOptions.itineraryContainer) {
-                                renderOptions.itineraryContainer = window && window.document.getElementById(renderOptions.itineraryContainer);
+                                renderOptions.itineraryContainer =
+                                    window && window.document.getElementById(renderOptions.itineraryContainer);
                             }
                             directionsManager.setRenderOptions(renderOptions);
                         }
@@ -726,14 +797,18 @@ var ReactBingmaps = (function (_Component) {
                             var distanceUnit = requestOptions.distanceUnit
                                 ? Microsoft.Maps.Directions.DistanceUnit[requestOptions.distanceUnit]
                                 : null;
-                            var routeMode = requestOptions.routeMode ? Microsoft.Maps.Directions.RouteMode[requestOptions.routeMode] : null;
+                            var routeMode = requestOptions.routeMode
+                                ? Microsoft.Maps.Directions.RouteMode[requestOptions.routeMode]
+                                : null;
                             var routeAvoidance = requestOptions.routeAvoidance
                                 ? Microsoft.Maps.Directions.RouteAvoidance[requestOptions.routeAvoidance]
                                 : null;
                             var routeOptimization = requestOptions.routeOptimization
                                 ? Microsoft.Maps.Directions.RouteOptimization[requestOptions.routeOptimization]
                                 : null;
-                            var timeType = requestOptions.timeType ? Microsoft.Maps.Directions.TimeTypes[requestOptions.timeType] : null;
+                            var timeType = requestOptions.timeType
+                                ? Microsoft.Maps.Directions.TimeTypes[requestOptions.timeType]
+                                : null;
 
                             var vehicleSpec = requestOptions.vehicleSpec ? requestOptions.vehicleSpec : null;
                             var maxRoutes = requestOptions.maxRoutes ? requestOptions.maxRoutes : null;
@@ -761,10 +836,18 @@ var ReactBingmaps = (function (_Component) {
                         for (var wayPointsIndex = 0; wayPointsIndex < wayPoints.length; wayPointsIndex++) {
                             var address = wayPoints[wayPointsIndex].address ? wayPoints[wayPointsIndex].address : null;
                             var location =
-                                wayPoints[wayPointsIndex].location && wayPoints[wayPointsIndex].location[0] && wayPoints[wayPointsIndex].location[1]
-                                    ? new Microsoft.Maps.Location(wayPoints[wayPointsIndex].location[0], wayPoints[wayPointsIndex].location[1])
+                                wayPoints[wayPointsIndex].location &&
+                                wayPoints[wayPointsIndex].location[0] &&
+                                wayPoints[wayPointsIndex].location[1]
+                                    ? new Microsoft.Maps.Location(
+                                          wayPoints[wayPointsIndex].location[0],
+                                          wayPoints[wayPointsIndex].location[1],
+                                      )
                                     : null;
-                            var isViaPoint = wayPoints[wayPointsIndex].isViaPoint !== undefined ? wayPoints[wayPointsIndex].isViaPoint : null;
+                            var isViaPoint =
+                                wayPoints[wayPointsIndex].isViaPoint !== undefined
+                                    ? wayPoints[wayPointsIndex].isViaPoint
+                                    : null;
 
                             wayPointsAsDirection.push(
                                 new Microsoft.Maps.Directions.Waypoint({

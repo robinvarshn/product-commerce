@@ -62,6 +62,7 @@ $link-color-hover: #f5f5f5;
 $link-focus-color: #333f47;
 $color-global-white: #fff;
 $color-global-black: #000;
+$color-global-grey-1: lighten($color-global-black, 99%);
 $color-global-grey-5: lighten($color-global-black, 95%); // #f2f2f2
 $color-global-grey-10: lighten($color-global-black, 90%); // #e6e6e6
 $color-global-grey-15: lighten($color-global-black, 85%); // #d9d9d9

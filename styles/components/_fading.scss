@@ -1,0 +1,21 @@
+@import '../constants/configs';
+
+.fade-in-section {
+    opacity: 0;
+    transform: translateY(20vh);
+    transition: opacity 1200ms ease-out, transform 600ms ease-out, visibility 1200ms ease-out;
+    visibility: hidden;
+}
+
+.fade-in-section.is-visible {
+    opacity: 1;
+    transform: none;
+    visibility: visible;
+}
+
+.fade-in-section.products {
+    padding: 10px;
+    @media (min-width: $media-phone-breakpoint) {
+        flex: 0 0 18%;
+    }
+}
