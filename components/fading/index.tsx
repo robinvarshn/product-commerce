@@ -5,7 +5,7 @@ import '@styles/_fading.scss';
 const FadeInSection = ({ children, type }: FadeInProps) => {
     const [isVisible, setVisible] = useState<boolean>(false);
     const [isIntersected, setIntersected] = useState<boolean>(false);
-    const domRef = useRef<any>();
+    const domRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
         const observer = new IntersectionObserver((entries) => {
@@ -13,7 +13,9 @@ const FadeInSection = ({ children, type }: FadeInProps) => {
                 setVisible(entry.isIntersecting);
             });
         });
-        observer.observe(domRef.current);
+        if (domRef?.current) {
+            observer.observe(domRef?.current);
+        }
     }, []);
 
     useEffect(() => {
