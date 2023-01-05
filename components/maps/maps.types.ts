@@ -15,5 +15,5 @@ export type InfoContainer = {
 };
 
 export type BingMapsProps = {
-    mapsApiKey: string
-}
+    mapsApiKey: string;
+};

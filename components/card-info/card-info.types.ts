@@ -4,4 +4,4 @@ export type CardInfoTypes = {
     cardIcon: string;
     cardType: string;
     type: string;
-}
+};

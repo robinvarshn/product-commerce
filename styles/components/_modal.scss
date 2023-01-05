@@ -23,13 +23,13 @@
     &-close {
         all: unset;
         cursor: pointer;
-        font-size: $u-heading-1;
         float: right;
-        padding: 0 2.5rem;
+        font-size: $u-heading-1;
+        padding: 0 1.5rem;
 
         @media (min-width: $media-phone-breakpoint) {
-            font-size: $u-heading-1 + $u-heading-1;
             float: right;
+            font-size: $u-heading-1 + $u-heading-1;
             padding: 0 4rem;
         }
 

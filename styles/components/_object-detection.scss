@@ -1,0 +1,93 @@
+@import '../constants/configs';
+
+.object-detection {
+    &__data {
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__img {
+        height: 72vw;
+        position: relative;
+        width: 95vw;
+        z-index: 10;
+
+        @media (min-width: $media-phone-breakpoint) {
+            height: 48rem;
+            width: 64rem;
+        }
+    }
+
+    &__container {
+        border: 0.3rem solid $color-global-black;
+        padding: 0.75rem;
+        position: relative;
+
+        &::before {
+            background-color: $color-global-white;
+            content: '';
+            height: calc(100% + 10px);
+            left: 25%;
+            position: absolute;
+            top: -5px;
+            width: 50%;
+            z-index: 1;
+        }
+
+        &::after {
+            background-color: $color-global-white;
+            content: '';
+            height: 50%;
+            left: -5px;
+            position: absolute;
+            top: 25%;
+            width: calc(100% + 10px);
+            z-index: 1;
+        }
+    }
+
+    &__desc {
+        padding: 1rem;
+        text-align: center;
+    }
+
+    &__header {
+        font-size: $u-heading-4;
+        font-weight: 800;
+        margin-bottom: 4rem;
+        text-decoration: underline;
+        text-underline-offset: 1rem;
+
+        @media (min-width: $media-phone-breakpoint) {
+            font-size: $u-heading-2;
+        }
+    }
+
+    &__note {
+        font-size: $u-heading-5;
+        font-weight: 800;
+        margin: 5rem 0;
+        text-align: center;
+    }
+
+    &__video {
+        aspect-ratio: unset;
+        height: inherit;
+        position: absolute;
+        width: inherit;
+    }
+
+    &__canvas {
+        aspect-ratio: unset;
+        height: inherit;
+        position: absolute;
+        width: inherit;
+    }
+
+    &__error {
+        font-size: $u-heading-3;
+        font-weight: 600;
+        text-align: center;
+    }
+}

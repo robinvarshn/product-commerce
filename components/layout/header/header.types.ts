@@ -1,1 +1,1 @@
-export type HeaderProps = {}
+export type HeaderProps = {};

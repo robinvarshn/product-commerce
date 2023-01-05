@@ -1,1 +1,1 @@
-export type VoiceAsistant = {}
+export type VoiceAsistant = {};
