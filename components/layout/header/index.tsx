@@ -1,4 +1,4 @@
-import Image from 'next/image';
+import Image from 'next/legacy/image';
 import Link from 'next/link';
 import '@styles/_header.scss';
 
@@ -10,7 +10,12 @@ const Header = (): JSX.Element => {
                     <li className="header__item">
                         <Link href={'/'} legacyBehavior>
                             <a className="header__logo">
-                                <Image className="header__image" src={'/header-logo.png'} layout="fill" alt={''} />
+                                <Image
+                                    className="header__image"
+                                    src={'/header-logo.png'}
+                                    layout="fill"
+                                    alt={''}
+                                />
                             </a>
                         </Link>
                     </li>

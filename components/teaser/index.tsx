@@ -1,4 +1,4 @@
-import Image from 'next/image';
+import Image from 'next/legacy/image';
 import React from 'react';
 import { TeaserProps } from './teaser.types';
 import '@styles/_teaser.scss';
@@ -13,7 +13,9 @@ const Teaser = ({ imageURL }: TeaserProps): JSX.Element => {
                         <Text textData="Retail AI: The Next GEN Online Purchase Solution" />
                     </div>
                     <div className="cmp-teaser__image">
-                        {imageURL && <Image src={`/hero-banner.jpeg`} layout="fill" alt={''} />}
+                        {imageURL && (
+                            <Image priority src={`/hero-banner.jpeg`} layout="fill" alt={''} />
+                        )}
                         <div className="cmp-teaser__divider" />
                         {/* placeholder="blur" blurDataURL={''} */}
                     </div>

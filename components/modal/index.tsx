@@ -10,7 +10,13 @@ const ModalComponent = ({ children, isOpen, setModal }: ModalTypes): JSX.Element
 
     return (
         <React.Fragment>
-            <Modal className="modal" overlayClassName="overlay" isOpen={isOpen} onRequestClose={closeModal}>
+            <Modal
+                ariaHideApp={false}
+                className="modal"
+                overlayClassName="overlay"
+                isOpen={isOpen}
+                onRequestClose={closeModal}
+            >
                 <button className="modal-close" onClick={() => closeModal()}></button>
                 <div className="modal-content">{children}</div>
             </Modal>

@@ -1,4 +1,4 @@
-import Image from 'next/image';
+import Image from 'next/legacy/image';
 import Link from 'next/link';
 import React from 'react';
 import { FooterProps } from './footer.types';
@@ -16,8 +16,7 @@ const Footer = ({ footerData }: FooterProps): JSX.Element => {
                         <Image
                             src={`${footerData.brandLogo}`}
                             alt={footerData.copyRightContent}
-                            width="200"
-                            height="100"
+                            layout="fill"
                         />
                     </div>
                     <div className="footer__links">

@@ -1,0 +1,73 @@
+@import '../constants/configs';
+
+.voice {
+    align-items: center;
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 5rem;
+    justify-content: center;
+
+    @media (min-width: $media-phone-breakpoint) {
+        flex-direction: row;
+        gap: 15rem;
+    }
+
+    &-data {
+        font-size: $u-heading-3;
+        font-weight: 600;
+        flex: 0 0 30%;
+        padding: 2rem;
+        text-align: center;
+
+        @media (min-width: $media-phone-breakpoint) {
+            font-size: $u-heading-2;
+        }
+    }
+
+    &-try {
+        all: unset;
+        cursor: pointer;
+        color: $color-accent;
+        display: inline-block;
+        font-size: $u-heading-5;
+    }
+
+    &-mic {
+        border: 5px solid $color-shade-1;
+        border-radius: 50%;
+        position: relative;
+        height: 15rem;
+        width: 15rem;
+    }
+
+    &-vector {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    &-listen {
+        animation: glowing 5000ms infinite;
+        .svg {
+            path {
+                fill: $color-warn !important;
+            }
+        }
+    }
+}
+
+@keyframes glowing {
+    0% {
+        box-shadow: 0 0 -4rem $color-global-grey-50;
+    }
+    40% {
+        box-shadow: 0 0 6rem $color-global-grey-50;
+    }
+    60% {
+        box-shadow: 0 0 6rem $color-global-grey-50;
+    }
+    100% {
+        box-shadow: 0 0 -4rem $color-global-grey-50;
+    }
+}

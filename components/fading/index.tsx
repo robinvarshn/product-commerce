@@ -3,8 +3,8 @@ import { FadeInProps } from './fading.types';
 import '@styles/_fading.scss';
 
 const FadeInSection = ({ children, type }: FadeInProps) => {
-    const [isVisible, setVisible] = useState(false);
-    const [isIntersected, setIntersected] = useState(false);
+    const [isVisible, setVisible] = useState<boolean>(false);
+    const [isIntersected, setIntersected] = useState<boolean>(false);
     const domRef = useRef<any>();
 
     useEffect(() => {
@@ -23,7 +23,10 @@ const FadeInSection = ({ children, type }: FadeInProps) => {
     }, [isVisible]);
 
     return (
-        <div className={`fade-in-section ${isIntersected ? 'is-visible' : ''} ${type}`} ref={domRef}>
+        <div
+            className={`fade-in-section ${isIntersected ? 'is-visible' : ''} ${type}`}
+            ref={domRef}
+        >
             {children}
         </div>
     );
