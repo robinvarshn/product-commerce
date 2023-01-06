@@ -1,8 +1,8 @@
+import '@styles/_footer.scss';
 import Image from 'next/legacy/image';
 import Link from 'next/link';
 import React from 'react';
-import { FooterProps } from './footer.types';
-import '@styles/_footer.scss';
+import { FooterProps } from './footer';
 
 const Footer = ({ footerData }: FooterProps): JSX.Element => {
     return (

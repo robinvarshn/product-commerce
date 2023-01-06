@@ -2,10 +2,10 @@
  * Global Document File which is included for all the routes
  * @author Robin Varshney (robinvarshn@adobe.com)
  */
-import Document, { Html, Head, Main, NextScript } from 'next/document';
 import { readFileSync } from 'fs';
-import { join } from 'path';
 import fs from 'fs-extra';
+import Document, { Head, Html, Main, NextScript } from 'next/document';
+import { join } from 'path';
 
 class InlineStylesHead extends Head {
     getCssLinks = ({ allFiles }: any) => {

@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react';
-import 'regenerator-runtime/runtime';
-import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition';
 import '@styles/_voice-assistant.scss';
+import React, { useEffect, useState } from 'react';
+import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition';
 import { ReactSVG } from 'react-svg';
+import 'regenerator-runtime/runtime';
 import { KeywordMapper, ResultSet } from './utility';
 
 const VoiceAssistant = (): JSX.Element => {

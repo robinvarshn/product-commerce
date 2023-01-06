@@ -1,6 +1,6 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { FadeInProps } from './fading.types';
 import '@styles/_fading.scss';
+import { useEffect, useRef, useState } from 'react';
+import { FadeInProps } from './fading';
 
 const FadeInSection = ({ children, type }: FadeInProps) => {
     const [isVisible, setVisible] = useState<boolean>(false);

@@ -1,0 +1,34 @@
+@import '../globalImports.scss';
+@import 'react-tabs/style/react-tabs.scss';
+
+.react-tabs {
+    &__tab-list {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    &__tab {
+        font-size: $u-heading-6;
+        font-weight: 600;
+
+        @media (min-width: $media-phone-breakpoint) {
+            font-size: $u-heading-4;
+        }
+
+        &:focus {
+            &::after {
+                all: unset;
+            }
+        }
+
+        &--selected {
+            border: 0;
+            border-bottom: 3px solid $color-global-black;
+            bottom: unset;
+        }
+    }
+
+    &__tab-panel {
+        padding: 1rem;
+    }
+}

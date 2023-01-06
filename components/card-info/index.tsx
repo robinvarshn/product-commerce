@@ -1,11 +1,11 @@
-import Image from 'next/legacy/image';
-import React, { useState } from 'react';
 import '@styles/_cardInfo.scss';
-import { CardInfoTypes } from './card-info.types';
 import FadeInSection from 'components/fading';
 import ModalComponent from 'components/modal';
-import VoiceAssistant from 'components/voice-assistant';
 import ObjectDetection from 'components/object-detection';
+import VoiceAssistant from 'components/voice-assistant';
+import Image from 'next/legacy/image';
+import React, { useState } from 'react';
+import { CardInfoTypes } from './card-info';
 
 const CardInfo = ({
     cardText,

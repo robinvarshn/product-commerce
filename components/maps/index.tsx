@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react';
-import dynamic from 'next/dynamic';
-import { BingMapsProps, InfoContainer } from './maps.types';
-import MapsData from '../../sample/locationInfo.json';
 import '@styles/_maps.scss';
+import dynamic from 'next/dynamic';
+import { useEffect, useState } from 'react';
+import MapsData from '../../sample/locationInfo.json';
+import { BingMapsProps, InfoContainer } from './maps';
 
 const ReactBingmaps = dynamic(() => import('@/maps'), { ssr: false });
 

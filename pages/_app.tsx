@@ -1,10 +1,10 @@
-import '../styles/globalLayout.scss';
+import Footer from 'components/layout/footer';
+import Header from 'components/layout/header';
 import type { AppProps } from 'next/app';
+import Head from 'next/head';
 import NextNProgress from 'nextjs-progressbar';
 import React from 'react';
-import Header from 'components/layout/header';
-import Footer from 'components/layout/footer';
-import Head from 'next/head';
+import '../styles/globalLayout.scss';
 
 export default function App({ Component, pageProps }: AppProps) {
     return (

@@ -1,6 +1,6 @@
 import type * as cocossd from '@tensorflow-models/coco-ssd';
-import { CanvasDetecType } from './object-detection.types';
 import { KeywordMapper, ResultSet } from 'components/voice-assistant/utility';
+import { CanvasDetecType } from './object-detection';
 
 const drawRect = (detections: cocossd.DetectedObject[], ctx: CanvasDetecType) => {
     detections.forEach((prediction) => {

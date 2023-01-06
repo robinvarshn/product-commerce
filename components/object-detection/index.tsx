@@ -1,10 +1,10 @@
+import '@styles/_object-detection.scss';
 import * as cocossd from '@tensorflow-models/coco-ssd';
 import '@tensorflow/tfjs';
+import { ResultSet } from 'components/voice-assistant/utility';
+import React, { useEffect, useRef, useState } from 'react';
 import Webcam from 'react-webcam';
 import { drawRect, ResultMapper } from './utilities';
-import React, { useEffect, useRef, useState } from 'react';
-import '@styles/_object-detection.scss';
-import { ResultSet } from 'components/voice-assistant/utility';
 
 const ObjectDetection = (): JSX.Element => {
     const [isWebcamError, setWebCamError] = useState<boolean>(false);

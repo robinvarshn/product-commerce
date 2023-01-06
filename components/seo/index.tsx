@@ -1,6 +1,6 @@
 import Head from 'next/head';
 import React from 'react';
-import { SeoProps } from './seo.types';
+import { SeoProps } from './seo';
 
 const Seo = ({ pageTitle = '' }: SeoProps): JSX.Element => {
     return (

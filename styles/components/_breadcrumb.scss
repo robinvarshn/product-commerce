@@ -1,0 +1,39 @@
+@import '../globalImports.scss';
+
+.breadcrumb {
+    &-list {
+        background-color: $color-global-grey-5;
+        list-style: none;
+        padding: 1rem;
+
+        @media (min-width: $media-phone-breakpoint) {
+            padding: 1rem 2.6rem;
+        }
+    }
+
+    &-item {
+        display: inline;
+        font-size: $u-heading-6;
+
+        @media (min-width: $media-phone-breakpoint) {
+            font-size: $u-heading-5;
+        }
+    }
+
+    &-item + &-item::before {
+        color: $color-global-black;
+        content: '/\00a0';
+        padding: 1rem;
+    }
+
+    &-trail {
+        color: $color-accent;
+        text-decoration: none;
+
+        &:hover {
+            color: $color-accent-darker;
+            text-decoration: underline;
+            text-underline-offset: 0.25rem;
+        }
+    }
+}

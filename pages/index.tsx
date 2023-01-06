@@ -1,12 +1,12 @@
-import React from 'react';
-import Teaser from 'components/teaser';
-import Seo from 'components/seo';
+import '@layout/_homepage.scss';
 import CardInfo from 'components/card-info';
+import FadeInSection from 'components/fading';
+import Seo from 'components/seo';
+import Teaser from 'components/teaser';
 import Text from 'components/text';
+import React from 'react';
 import CardData from '.././sample/cardCategory.json';
 import FeatureData from '.././sample/cardFeatures.json';
-import '@layout/_homepage.scss';
-import FadeInSection from 'components/fading';
 
 const Home = (): JSX.Element => {
     return (
@@ -32,7 +32,6 @@ const Home = (): JSX.Element => {
                         </div>
                     </React.Fragment>
                 )}
-
                 <FadeInSection>
                     <React.Fragment>
                         <div className="homepage-feature">

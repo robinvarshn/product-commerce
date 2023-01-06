@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
-import Modal from 'react-modal';
 import '@styles/_modal.scss';
-import { ModalTypes } from './modal.types';
+import React from 'react';
+import Modal from 'react-modal';
+import { ModalTypes } from './modal';
 
 const ModalComponent = ({ children, isOpen, setModal }: ModalTypes): JSX.Element => {
     const closeModal = (): void => {

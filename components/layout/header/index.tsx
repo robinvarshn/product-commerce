@@ -1,6 +1,6 @@
+import '@styles/_header.scss';
 import Image from 'next/legacy/image';
 import Link from 'next/link';
-import '@styles/_header.scss';
 
 const Header = (): JSX.Element => {
     return (

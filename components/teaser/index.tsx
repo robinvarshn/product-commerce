@@ -1,8 +1,8 @@
-import Image from 'next/legacy/image';
-import React from 'react';
-import { TeaserProps } from './teaser.types';
 import '@styles/_teaser.scss';
 import Text from 'components/text';
+import Image from 'next/legacy/image';
+import React from 'react';
+import { TeaserProps } from './teaser';
 
 const Teaser = ({ imageURL }: TeaserProps): JSX.Element => {
     return (
