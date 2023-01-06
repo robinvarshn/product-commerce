@@ -1,0 +1,55 @@
+@import '../globalImports.scss';
+
+.accordion {
+    border-top: 0.3rem solid $color-border;
+    margin: 0 auto;
+
+    &__item {
+        border-bottom: 0.3rem solid $color-border;
+    }
+
+    &__button {
+        all: unset;
+        box-sizing: border-box;
+        cursor: pointer;
+        display: block;
+        padding: 2rem 3rem 2rem 2rem;
+        font-size: $u-heading-6;
+        position: relative;
+        width: 100%;
+
+        @media (min-width: $media-phone-breakpoint) {
+            font-size: $u-heading-4;
+        }
+
+        &::after {
+            content: '\002B';
+            position: absolute;
+            top: 45%;
+            right: 2%;
+            font-weight: 500;
+            transform: translate(-50%, -50%);
+            font-size: $u-heading-2;
+            transition: transform 0.3s ease;
+
+            @media (min-width: $media-phone-breakpoint) {
+                font-size: $u-heading-1;
+            }
+        }
+
+        &-open::after {
+            transition: transform 0.3s ease;
+            transform: translate(-50%, -50%) rotate(45deg);
+        }
+    }
+
+    &__panel {
+        overflow: hidden;
+        padding: 0 5rem 0 2rem;
+        font-size: $u-medium-text;
+        transition: max-height 0.5s ease;
+        @media (min-width: $media-phone-breakpoint) {
+            font-size: $u-heading-5;
+        }
+    }
+}
