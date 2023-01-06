@@ -2,6 +2,7 @@ import '@styles/_object-detection.scss';
 import * as cocossd from '@tensorflow-models/coco-ssd';
 import '@tensorflow/tfjs';
 import { ResultSet } from 'components/voice-assistant/utility';
+import { NextRouter, useRouter } from 'next/router';
 import React, { useEffect, useRef, useState } from 'react';
 import Webcam from 'react-webcam';
 import { drawRect, ResultMapper } from './utilities';
@@ -10,6 +11,7 @@ const ObjectDetection = (): JSX.Element => {
     const [isWebcamError, setWebCamError] = useState<boolean>(false);
     const webcamRef = useRef<Webcam>({} as Webcam);
     const canvasRef = useRef<HTMLCanvasElement>({} as HTMLCanvasElement);
+    const router: NextRouter = useRouter();
 
     const setCanvas = (video: HTMLVideoElement) => {
         const parentEle = video?.parentElement;
@@ -27,7 +29,7 @@ const ObjectDetection = (): JSX.Element => {
 
     const keywordDecision = (resultSet: ResultSet) => {
         if (Object.keys(resultSet).length) {
-            console.log('Match Found');
+            router.push(`/product/${resultSet.category}/${resultSet.keyword}`);
         }
     };
 

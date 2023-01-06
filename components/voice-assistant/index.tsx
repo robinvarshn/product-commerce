@@ -1,4 +1,5 @@
 import '@styles/_voice-assistant.scss';
+import { NextRouter, useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
 import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition';
 import { ReactSVG } from 'react-svg';
@@ -9,7 +10,7 @@ const VoiceAssistant = (): JSX.Element => {
     const [voiceError, setVoiceError] = useState<string>('');
     const [voiceWarn, setVoiceWarn] = useState<string>('');
     const [isTranscript, setTransDecision] = useState<boolean>(false);
-
+    const router: NextRouter = useRouter();
     const {
         transcript,
         listening,
@@ -35,7 +36,7 @@ const VoiceAssistant = (): JSX.Element => {
                 setTransDecision(true);
                 setVoiceWarn('No result found with the given keyword');
             } else {
-                console.log('Match found');
+                router.push(`/product/${checkPrediction.category}/${checkPrediction.keyword}`);
             }
         } else if (!listening && !transcript.length && isMicrophoneAvailable) {
             setTransDecision(true);
