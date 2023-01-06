@@ -4,6 +4,7 @@ import type { AppProps } from 'next/app';
 import Head from 'next/head';
 import NextNProgress from 'nextjs-progressbar';
 import React from 'react';
+import 'regenerator-runtime/runtime';
 import '../styles/globalLayout.scss';
 
 export default function App({ Component, pageProps }: AppProps) {

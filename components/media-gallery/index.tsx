@@ -10,7 +10,7 @@ const MediaGallery = ({ images }: MediaGalleryTypes): JSX.Element => {
             showIndex={true}
             showBullets={true}
             showFullscreenButton={false}
-            thumbnailPosition="bottom"
+            thumbnailPosition="left"
         />
     );
 };
