@@ -51,7 +51,9 @@ function _classCallCheck(instance, Constructor) {
 
 function _possibleConstructorReturn(self, call) {
     if (!self) {
-        throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+        throw new ReferenceError(
+            "this hasn't been initialised - super() hasn't been called",
+        );
     }
     return call && (typeof call === 'object' || typeof call === 'function') ? call : self;
 }
@@ -59,11 +61,17 @@ function _possibleConstructorReturn(self, call) {
 function _inherits(subClass, superClass) {
     if (typeof superClass !== 'function' && superClass !== null) {
         throw new TypeError(
-            'Super expression must either be null or a function, not ' + typeof superClass,
+            'Super expression must either be null or a function, not ' +
+                typeof superClass,
         );
     }
     subClass.prototype = Object.create(superClass && superClass.prototype, {
-        constructor: { value: subClass, enumerable: false, writable: true, configurable: true },
+        constructor: {
+            value: subClass,
+            enumerable: false,
+            writable: true,
+            configurable: true,
+        },
     });
     if (superClass)
         Object.setPrototypeOf
@@ -85,10 +93,16 @@ var ReactBingmaps = (function (_Component) {
 
         var _this = _possibleConstructorReturn(
             this,
-            (ReactBingmaps.__proto__ || Object.getPrototypeOf(ReactBingmaps)).call(this, props),
+            (ReactBingmaps.__proto__ || Object.getPrototypeOf(ReactBingmaps)).call(
+                this,
+                props,
+            ),
         );
 
-        if (window && window.document.querySelector('script[src="' + scriptURL + '"]') === null) {
+        if (
+            window &&
+            window.document.querySelector('script[src="' + scriptURL + '"]') === null
+        ) {
             _this.loadScript(scriptURL);
             window.bingmapsCallback = function () {
                 Microsoft = window.Microsoft;
@@ -127,7 +141,9 @@ var ReactBingmaps = (function (_Component) {
             key: 'componentWillUnmount',
             value: function componentWillUnmount() {
                 try {
-                    var mapReference = this.props.id ? '#' + this.props.id : '.react-bingmaps';
+                    var mapReference = this.props.id
+                        ? '#' + this.props.id
+                        : '.react-bingmaps';
                     if (map[mapReference])
                         //map[mapReference].dispose();
 
@@ -147,7 +163,8 @@ var ReactBingmaps = (function (_Component) {
                 script.async = true;
                 script.defer = true;
                 script.src = url;
-                window && window.document.getElementsByTagName('head')[0].appendChild(script);
+                window &&
+                    window.document.getElementsByTagName('head')[0].appendChild(script);
             },
         },
         {
@@ -169,10 +186,16 @@ var ReactBingmaps = (function (_Component) {
                     );
                 }
                 if (this.props.navigationBarMode !== nextProps.navigationBarMode) {
-                    this.setMapNavigationBarMode(nextProps.navigationBarMode, mapReference);
+                    this.setMapNavigationBarMode(
+                        nextProps.navigationBarMode,
+                        mapReference,
+                    );
                 }
                 if (this.props.supportedMapTypes !== nextProps.supportedMapTypes) {
-                    this.setMapSupportedMapTypes(nextProps.supportedMapTypes, mapReference);
+                    this.setMapSupportedMapTypes(
+                        nextProps.supportedMapTypes,
+                        mapReference,
+                    );
                 }
                 if (this.props.disableStreetside !== nextProps.disableStreetside) {
                     this.setDisableStreetside(nextProps.disableStreetside, mapReference);
@@ -183,7 +206,9 @@ var ReactBingmaps = (function (_Component) {
                 if (this.props.infoboxes !== nextProps.infoboxes) {
                     this.setInfoboxes(nextProps.infoboxes, 'infoboxes', mapReference);
                 }
-                if (this.props.infoboxesWithPushPins !== nextProps.infoboxesWithPushPins) {
+                if (
+                    this.props.infoboxesWithPushPins !== nextProps.infoboxesWithPushPins
+                ) {
                     this.setInfoboxesWithPushPins(
                         nextProps.infoboxesWithPushPins,
                         'infoboxesWithPushPins',
@@ -340,13 +365,21 @@ var ReactBingmaps = (function (_Component) {
             key: 'setPushPins',
             value: function setPushPins(pushPins, mapReference) {
                 if (map[mapReference] && pushPins) {
-                    for (var i = map[mapReference].entities.getLength() - 1; i >= 0; i--) {
+                    for (
+                        var i = map[mapReference].entities.getLength() - 1;
+                        i >= 0;
+                        i--
+                    ) {
                         var pushpin = map[mapReference].entities.get(i);
                         if (pushpin instanceof Microsoft.Maps.Pushpin) {
                             map[mapReference].entities.removeAt(i);
                         }
                     }
-                    for (var pushPinIndex = 0; pushPinIndex < pushPins.length; pushPinIndex++) {
+                    for (
+                        var pushPinIndex = 0;
+                        pushPinIndex < pushPins.length;
+                        pushPinIndex++
+                    ) {
                         if (
                             pushPins[pushPinIndex].location &&
                             pushPins[pushPinIndex].location[0] &&
@@ -359,7 +392,12 @@ var ReactBingmaps = (function (_Component) {
                             var option = pushPins[pushPinIndex].option
                                 ? pushPins[pushPinIndex].option
                                 : null;
-                            if (option && option.anchor && option.anchor[0] && option.anchor[1]) {
+                            if (
+                                option &&
+                                option.anchor &&
+                                option.anchor[0] &&
+                                option.anchor[1]
+                            ) {
                                 option.anchor = new Microsoft.Maps.Point(
                                     option.anchor[0],
                                     option.anchor[1],
@@ -391,7 +429,8 @@ var ReactBingmaps = (function (_Component) {
                 if (map[mapReference] && infoboxes) {
                     for (
                         var i = 0;
-                        infobox[infoboxCreateType] && i < infobox[infoboxCreateType].length;
+                        infobox[infoboxCreateType] &&
+                        i < infobox[infoboxCreateType].length;
                         i++
                     ) {
                         infobox[infoboxCreateType][i].setMap(null);
@@ -416,14 +455,17 @@ var ReactBingmaps = (function (_Component) {
                                     ? infoboxes[infoboxIndex].option
                                     : null;
                                 if (option.htmlContent) {
-                                    option.htmlContent = _server2.default.renderToStaticMarkup(
-                                        option.htmlContent,
-                                    );
+                                    option.htmlContent =
+                                        _server2.default.renderToStaticMarkup(
+                                            option.htmlContent,
+                                        );
                                 }
                                 infobox[infoboxCreateType].push(
                                     new Microsoft.Maps.Infobox(location, option),
                                 );
-                                infobox[infoboxCreateType][infoboxIndex].setMap(map[mapReference]);
+                                infobox[infoboxCreateType][infoboxIndex].setMap(
+                                    map[mapReference],
+                                );
                                 if (infoboxes[infoboxIndex].addHandler) {
                                     Microsoft.Maps.Events.addHandler(
                                         infobox[infoboxCreateType][infoboxIndex],
@@ -433,7 +475,8 @@ var ReactBingmaps = (function (_Component) {
                                         }.bind(
                                             this,
                                             infoboxes[infoboxIndex].addHandler.callback,
-                                            infoboxes[infoboxIndex].addHandler.callbackData,
+                                            infoboxes[infoboxIndex].addHandler
+                                                .callbackData,
                                         ),
                                     );
                                 }
@@ -455,7 +498,8 @@ var ReactBingmaps = (function (_Component) {
                     var i;
                     for (
                         i = 0;
-                        infobox[infoboxCreateType] && i < infobox[infoboxCreateType].length;
+                        infobox[infoboxCreateType] &&
+                        i < infobox[infoboxCreateType].length;
                         i++
                     ) {
                         infobox[infoboxCreateType][i].setMap(null);
@@ -481,14 +525,20 @@ var ReactBingmaps = (function (_Component) {
                             if (infoboxesWithPushPins[infoboxWithPushPinIndex].location) {
                                 //Set Location
                                 var location = new Microsoft.Maps.Location(
-                                    infoboxesWithPushPins[infoboxWithPushPinIndex].location[0],
-                                    infoboxesWithPushPins[infoboxWithPushPinIndex].location[1],
+                                    infoboxesWithPushPins[
+                                        infoboxWithPushPinIndex
+                                    ].location[0],
+                                    infoboxesWithPushPins[
+                                        infoboxWithPushPinIndex
+                                    ].location[1],
                                 );
 
                                 //Set Infobox Option
-                                var infoboxOption = infoboxesWithPushPins[infoboxWithPushPinIndex]
-                                    .infoboxOption
-                                    ? infoboxesWithPushPins[infoboxWithPushPinIndex].infoboxOption
+                                var infoboxOption = infoboxesWithPushPins[
+                                    infoboxWithPushPinIndex
+                                ].infoboxOption
+                                    ? infoboxesWithPushPins[infoboxWithPushPinIndex]
+                                          .infoboxOption
                                     : null;
 
                                 //ConvertToHtml if Obj
@@ -500,14 +550,19 @@ var ReactBingmaps = (function (_Component) {
                                 }
 
                                 //If Handler added, initially hide Infobox
-                                if (infoboxesWithPushPins[infoboxWithPushPinIndex].addHandler) {
+                                if (
+                                    infoboxesWithPushPins[infoboxWithPushPinIndex]
+                                        .addHandler
+                                ) {
                                     infoboxOption['visible'] = false;
                                 }
 
                                 //Set Pushpin Option
-                                var pushPinOption = infoboxesWithPushPins[infoboxWithPushPinIndex]
-                                    .pushPinOption
-                                    ? infoboxesWithPushPins[infoboxWithPushPinIndex].pushPinOption
+                                var pushPinOption = infoboxesWithPushPins[
+                                    infoboxWithPushPinIndex
+                                ].pushPinOption
+                                    ? infoboxesWithPushPins[infoboxWithPushPinIndex]
+                                          .pushPinOption
                                     : null;
 
                                 //Initilize if anchor for Pushpin
@@ -526,16 +581,19 @@ var ReactBingmaps = (function (_Component) {
                                 infobox[infoboxCreateType].push(
                                     new Microsoft.Maps.Infobox(location, infoboxOption),
                                 );
-                                infobox[infoboxCreateType][infoboxWithPushPinIndex].setMap(
-                                    map[mapReference],
-                                );
+                                infobox[infoboxCreateType][
+                                    infoboxWithPushPinIndex
+                                ].setMap(map[mapReference]);
 
                                 //Set Infobox Callback if any
                                 if (
-                                    infoboxesWithPushPins[infoboxWithPushPinIndex].infoboxAddHandler
+                                    infoboxesWithPushPins[infoboxWithPushPinIndex]
+                                        .infoboxAddHandler
                                 ) {
                                     Microsoft.Maps.Events.addHandler(
-                                        infobox[infoboxCreateType][infoboxWithPushPinIndex],
+                                        infobox[infoboxCreateType][
+                                            infoboxWithPushPinIndex
+                                        ],
                                         infoboxesWithPushPins[infoboxWithPushPinIndex]
                                             .infoboxAddHandler.type,
                                         function (callback, data) {
@@ -551,12 +609,16 @@ var ReactBingmaps = (function (_Component) {
                                 }
 
                                 //Set Pushpin
-                                var _pushpin2 = new Microsoft.Maps.Pushpin(location, pushPinOption);
+                                var _pushpin2 = new Microsoft.Maps.Pushpin(
+                                    location,
+                                    pushPinOption,
+                                );
                                 map[mapReference].entities.push(_pushpin2);
 
                                 //Set Pushpin Callback if any
                                 if (
-                                    infoboxesWithPushPins[infoboxWithPushPinIndex].pushPinAddHandler
+                                    infoboxesWithPushPins[infoboxWithPushPinIndex]
+                                        .pushPinAddHandler
                                 ) {
                                     Microsoft.Maps.Events.addHandler(
                                         _pushpin2,
@@ -575,11 +637,17 @@ var ReactBingmaps = (function (_Component) {
                                 }
 
                                 //Set InfoboxesWithPushPins handler if any
-                                if (infoboxesWithPushPins[infoboxWithPushPinIndex].addHandler) {
+                                if (
+                                    infoboxesWithPushPins[infoboxWithPushPinIndex]
+                                        .addHandler
+                                ) {
                                     this.setInfoboxesWithPushPinsHandler(
-                                        infobox[infoboxCreateType][infoboxWithPushPinIndex],
+                                        infobox[infoboxCreateType][
+                                            infoboxWithPushPinIndex
+                                        ],
                                         _pushpin2,
-                                        infoboxesWithPushPins[infoboxWithPushPinIndex].addHandler,
+                                        infoboxesWithPushPins[infoboxWithPushPinIndex]
+                                            .addHandler,
                                     );
                                 }
                             }
@@ -601,11 +669,17 @@ var ReactBingmaps = (function (_Component) {
                                     typeof e.getX !== 'undefined' &&
                                     typeof e.getY !== 'undefined'
                                 ) {
-                                    var point = new Microsoft.Maps.Point(e.getX(), e.getY());
+                                    var point = new Microsoft.Maps.Point(
+                                        e.getX(),
+                                        e.getY(),
+                                    );
                                     var location = e.target.tryPixelToLocation(point);
                                     this.MakeCallback(callback, location);
                                 } else {
-                                    this.MakeCallback(callback, 'Event: ' + getLocation.addHandler);
+                                    this.MakeCallback(
+                                        callback,
+                                        'Event: ' + getLocation.addHandler,
+                                    );
                                 }
                             }.bind(this, getLocation.callback),
                         );
@@ -618,11 +692,17 @@ var ReactBingmaps = (function (_Component) {
                                     typeof e.getX !== 'undefined' &&
                                     typeof e.getY !== 'undefined'
                                 ) {
-                                    var point = new Microsoft.Maps.Point(e.getX(), e.getY());
+                                    var point = new Microsoft.Maps.Point(
+                                        e.getX(),
+                                        e.getY(),
+                                    );
                                     var location = e.target.tryPixelToLocation(point);
                                     this.MakeCallback(callback, location);
                                 } else {
-                                    this.MakeCallback(callback, 'Event: ' + getLocation.addHandler);
+                                    this.MakeCallback(
+                                        callback,
+                                        'Event: ' + getLocation.addHandler,
+                                    );
                                 }
                             }.bind(this, getLocation.callback),
                         );
@@ -662,7 +742,11 @@ var ReactBingmaps = (function (_Component) {
             key: 'createRegularPolygons',
             value: function createRegularPolygons(regularPolygons, mapReference) {
                 if (map[mapReference] && regularPolygons) {
-                    for (var i = map[mapReference].entities.getLength() - 1; i >= 0; i--) {
+                    for (
+                        var i = map[mapReference].entities.getLength() - 1;
+                        i >= 0;
+                        i--
+                    ) {
                         var regularPolygon = map[mapReference].entities.get(i);
                         if (regularPolygon instanceof Microsoft.Maps.Polygon) {
                             map[mapReference].entities.removeAt(i);
@@ -701,9 +785,13 @@ var ReactBingmaps = (function (_Component) {
                                                 location,
                                                 radius,
                                                 points,
-                                                Microsoft.Maps.SpatialMath.DistanceUnits.Miles,
+                                                Microsoft.Maps.SpatialMath.DistanceUnits
+                                                    .Miles,
                                             );
-                                        var polygon = new Microsoft.Maps.Polygon(locations, option);
+                                        var polygon = new Microsoft.Maps.Polygon(
+                                            locations,
+                                            option,
+                                        );
                                         map[mapReference].entities.push(polygon);
                                     },
                                 );
@@ -717,7 +805,11 @@ var ReactBingmaps = (function (_Component) {
             key: 'setBoundary',
             value: function setBoundary(boundary, mapReference) {
                 if (map[mapReference] && boundary) {
-                    for (var i = map[mapReference].entities.getLength() - 1; i >= 0; i--) {
+                    for (
+                        var i = map[mapReference].entities.getLength() - 1;
+                        i >= 0;
+                        i--
+                    ) {
                         var regularPolygon = map[mapReference].entities.get(i);
                         if (regularPolygon instanceof Microsoft.Maps.Polygon) {
                             map[mapReference].entities.removeAt(i);
@@ -737,33 +829,44 @@ var ReactBingmaps = (function (_Component) {
                     var boundaryLocation = boundary.location ? boundary.location : null;
 
                     var geoDataRequestOptions = boundary.option ? boundary.option : {};
-                    var polygonStyle = boundary.polygonStyle ? boundary.polygonStyle : null;
+                    var polygonStyle = boundary.polygonStyle
+                        ? boundary.polygonStyle
+                        : null;
                     var search = boundary.search ? boundary.search : null;
                     if (!search && boundaryLocation) {
-                        Microsoft.Maps.loadModule('Microsoft.Maps.SpatialDataService', function () {
-                            Microsoft.Maps.SpatialDataService.GeoDataAPIManager.getBoundary(
-                                boundaryLocation,
-                                geoDataRequestOptions,
-                                map[mapReference],
-                                function (data) {
-                                    if (data.results && data.results.length > 0) {
-                                        map[mapReference].entities.push(data.results[0].Polygons);
-                                    }
-                                },
-                                polygonStyle,
-                                function errCallback(networkStatus, statusMessage) {
-                                    console.log(networkStatus);
-                                    console.log(statusMessage);
-                                },
-                            );
-                        });
+                        Microsoft.Maps.loadModule(
+                            'Microsoft.Maps.SpatialDataService',
+                            function () {
+                                Microsoft.Maps.SpatialDataService.GeoDataAPIManager.getBoundary(
+                                    boundaryLocation,
+                                    geoDataRequestOptions,
+                                    map[mapReference],
+                                    function (data) {
+                                        if (data.results && data.results.length > 0) {
+                                            map[mapReference].entities.push(
+                                                data.results[0].Polygons,
+                                            );
+                                        }
+                                    },
+                                    polygonStyle,
+                                    function errCallback(networkStatus, statusMessage) {
+                                        console.log(networkStatus);
+                                        console.log(statusMessage);
+                                    },
+                                );
+                            },
+                        );
                     } else {
                         Microsoft.Maps.loadModule(
-                            ['Microsoft.Maps.SpatialDataService', 'Microsoft.Maps.Search'],
+                            [
+                                'Microsoft.Maps.SpatialDataService',
+                                'Microsoft.Maps.Search',
+                            ],
                             function () {
-                                var searchManager = new Microsoft.Maps.Search.SearchManager(
-                                    map[mapReference],
-                                );
+                                var searchManager =
+                                    new Microsoft.Maps.Search.SearchManager(
+                                        map[mapReference],
+                                    );
                                 var geocodeRequest = {
                                     where: search,
                                     callback: function callback(geocodeResult) {
@@ -780,14 +883,20 @@ var ReactBingmaps = (function (_Component) {
                                                 geoDataRequestOptions,
                                                 map[mapReference],
                                                 function (data) {
-                                                    if (data.results && data.results.length > 0) {
+                                                    if (
+                                                        data.results &&
+                                                        data.results.length > 0
+                                                    ) {
                                                         map[mapReference].entities.push(
                                                             data.results[0].Polygons,
                                                         );
                                                     }
                                                 },
                                                 polygonStyle,
-                                                function errCallback(networkStatus, statusMessage) {
+                                                function errCallback(
+                                                    networkStatus,
+                                                    statusMessage,
+                                                ) {
                                                     console.log(networkStatus);
                                                     console.log(statusMessage);
                                                 },
@@ -814,7 +923,11 @@ var ReactBingmaps = (function (_Component) {
             key: 'setPolyline',
             value: function setPolyline(polyline, mapReference) {
                 if (map[mapReference] && polyline) {
-                    for (var i = map[mapReference].entities.getLength() - 1; i >= 0; i--) {
+                    for (
+                        var i = map[mapReference].entities.getLength() - 1;
+                        i >= 0;
+                        i--
+                    ) {
                         var ref = map[mapReference].entities.get(i);
                         if (ref instanceof Microsoft.Maps.Polyline) {
                             map[mapReference].entities.removeAt(i);
@@ -855,7 +968,9 @@ var ReactBingmaps = (function (_Component) {
             value: function setDirections(directions, mapReference) {
                 if (map[mapReference] && directions) {
                     var inputPanel = directions.inputPanel ? directions.inputPanel : null;
-                    var renderOptions = directions.renderOptions ? directions.renderOptions : null;
+                    var renderOptions = directions.renderOptions
+                        ? directions.renderOptions
+                        : null;
                     var requestOptions = directions.requestOptions
                         ? directions.requestOptions
                         : null;
@@ -863,9 +978,10 @@ var ReactBingmaps = (function (_Component) {
                     var wayPointsAsDirection = [];
 
                     Microsoft.Maps.loadModule('Microsoft.Maps.Directions', function () {
-                        var directionsManager = new Microsoft.Maps.Directions.DirectionsManager(
-                            map[mapReference],
-                        );
+                        var directionsManager =
+                            new Microsoft.Maps.Directions.DirectionsManager(
+                                map[mapReference],
+                            );
                         directionsManager.clearAll();
                         if (inputPanel) {
                             directionsManager.showInputPanel(inputPanel);
@@ -887,7 +1003,9 @@ var ReactBingmaps = (function (_Component) {
                                   ]
                                 : null;
                             var routeMode = requestOptions.routeMode
-                                ? Microsoft.Maps.Directions.RouteMode[requestOptions.routeMode]
+                                ? Microsoft.Maps.Directions.RouteMode[
+                                      requestOptions.routeMode
+                                  ]
                                 : null;
                             var routeAvoidance = requestOptions.routeAvoidance
                                 ? Microsoft.Maps.Directions.RouteAvoidance[
@@ -900,7 +1018,9 @@ var ReactBingmaps = (function (_Component) {
                                   ]
                                 : null;
                             var timeType = requestOptions.timeType
-                                ? Microsoft.Maps.Directions.TimeTypes[requestOptions.timeType]
+                                ? Microsoft.Maps.Directions.TimeTypes[
+                                      requestOptions.timeType
+                                  ]
                                 : null;
 
                             var vehicleSpec = requestOptions.vehicleSpec
@@ -920,15 +1040,33 @@ var ReactBingmaps = (function (_Component) {
                             directionsManager.setRequestOptions(
                                 Object.assign(
                                     {},
-                                    distanceUnit && { distanceUnit: distanceUnit },
-                                    maxRoutes && { maxRoutes: maxRoutes },
-                                    routeMode && { routeMode: routeMode },
-                                    routeAvoidance && { routeAvoidance: routeAvoidance },
-                                    routeOptimization && { routeOptimization: routeOptimization },
-                                    timeType && { timeType: timeType },
-                                    vehicleSpec && { vehicleSpec: vehicleSpec },
-                                    routeDraggable && { routeDraggable: routeDraggable },
-                                    routeIndex && { routeIndex: routeIndex },
+                                    distanceUnit && {
+                                        distanceUnit: distanceUnit,
+                                    },
+                                    maxRoutes && {
+                                        maxRoutes: maxRoutes,
+                                    },
+                                    routeMode && {
+                                        routeMode: routeMode,
+                                    },
+                                    routeAvoidance && {
+                                        routeAvoidance: routeAvoidance,
+                                    },
+                                    routeOptimization && {
+                                        routeOptimization: routeOptimization,
+                                    },
+                                    timeType && {
+                                        timeType: timeType,
+                                    },
+                                    vehicleSpec && {
+                                        vehicleSpec: vehicleSpec,
+                                    },
+                                    routeDraggable && {
+                                        routeDraggable: routeDraggable,
+                                    },
+                                    routeIndex && {
+                                        routeIndex: routeIndex,
+                                    },
                                     time && { time: time },
                                 ),
                             );
@@ -1024,7 +1162,10 @@ var ReactBingmaps = (function (_Component) {
             value: function render() {
                 return _react2.default.createElement('div', {
                     id: this.props.id,
-                    className: (0, _classnames2.default)('react-bingmaps', this.props.className),
+                    className: (0, _classnames2.default)(
+                        'react-bingmaps',
+                        this.props.className,
+                    ),
                 });
             },
         },

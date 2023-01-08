@@ -28,7 +28,12 @@ const CardInfo = ({
                     <div className="card-info">
                         <div className="card-info__icon">
                             {cardIcon && (
-                                <Image src={`${cardIcon}`} alt={''} width={200} height={200} />
+                                <Image
+                                    src={`${cardIcon}`}
+                                    alt={''}
+                                    width={200}
+                                    height={200}
+                                />
                             )}
                         </div>
                         <div className="card-info__text">

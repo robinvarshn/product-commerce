@@ -80,7 +80,10 @@ const ObjectDetection = (): JSX.Element => {
                                     className="object-detection__video"
                                     onUserMediaError={() => setWebCamError(true)}
                                 />
-                                <canvas ref={canvasRef} className="object-detection__canvas" />
+                                <canvas
+                                    ref={canvasRef}
+                                    className="object-detection__canvas"
+                                />
                             </div>
                         </div>
                         <div className="object-detection__disc">

@@ -21,6 +21,12 @@
             "@layout/*": ["styles/layout/*"]
         }
     },
-    "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "aemHeadless.js", "aemHeadless.js"],
+    "include": [
+        "next-env.d.ts",
+        "**/*.ts",
+        "**/*.tsx",
+        "aemHeadless.js",
+        "aemHeadless.js"
+    ],
     "exclude": ["node_modules"]
 }

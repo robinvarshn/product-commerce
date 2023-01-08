@@ -14,7 +14,12 @@ const Teaser = ({ imageURL }: TeaserProps): JSX.Element => {
                     </div>
                     <div className="cmp-teaser__image">
                         {imageURL && (
-                            <Image priority src={`/hero-banner.jpeg`} layout="fill" alt={''} />
+                            <Image
+                                priority
+                                src={`/hero-banner.jpeg`}
+                                layout="fill"
+                                alt={''}
+                            />
                         )}
                         <div className="cmp-teaser__divider" />
                         {/* placeholder="blur" blurDataURL={''} */}

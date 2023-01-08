@@ -1,0 +1,29 @@
+@import '../globalImports.scss';
+
+:root {
+    --rating-size: 2.75rem;
+    --rating-color: #a7aaac;
+    --rating-background: $color-global-black;
+}
+
+.rating {
+    --percent: calc(var(--rating) / 5 * 100%);
+    display: inline-block;
+    font-size: var(--rating-size);
+    line-height: 1;
+    margin: 2rem 0;
+    text-align: center;
+    width: 100%;
+
+    &::before {
+        background: linear-gradient(
+            90deg,
+            var(--rating-background) var(--percent),
+            var(--rating-color) var(--percent)
+        );
+        background-clip: text;
+        content: '★★★★★';
+        letter-spacing: 0.5rem;
+        -webkit-text-fill-color: transparent;
+    }
+}

@@ -18,12 +18,12 @@
         @media (min-width: $media-phone-breakpoint) {
             font-size: $u-heading-5;
         }
-    }
 
-    &-item + &-item::before {
-        color: $color-global-black;
-        content: '/\00a0';
-        padding: 1rem;
+        & + &::before {
+            color: $color-global-black;
+            content: '/\00a0';
+            padding: 1rem;
+        }
     }
 
     &-trail {

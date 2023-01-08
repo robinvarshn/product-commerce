@@ -7,7 +7,12 @@ import type { Tablist } from 'components/tabs/tabs';
 import Text from 'components/text';
 import dynamic from 'next/dynamic';
 import React, { useEffect, useState } from 'react';
-import type { FAQProps, PDPTemplateProps, PinsInfo, TabsComponentProps } from './pdp-template';
+import type {
+    FAQProps,
+    PDPTemplateProps,
+    PinsInfo,
+    TabsComponentProps,
+} from './pdp-template';
 
 const MediaGallery = dynamic(() => import('components/media-gallery'), {
     ssr: false,
@@ -21,9 +26,9 @@ const TabsComponent = ({ tabInfo }: TabsComponentProps): JSX.Element => {
     const [tabList, setTabList] = useState<Tablist[]>([] as Tablist[]);
 
     const generateTabsData = (): void => {
-        let _tabArr: Tablist[] = tabInfo.map((ele) => {
-            let _tabObj = {} as Tablist;
-            let TabContent = TabsMapper[ele.tag];
+        const _tabArr: Tablist[] = tabInfo.map((ele) => {
+            const _tabObj = {} as Tablist;
+            const TabContent = TabsMapper[ele.tag];
             _tabObj['tabHeader'] = ele.data?.title;
             _tabObj['tabContent'] = TabContent(ele.data);
             return {
@@ -46,10 +51,10 @@ const TabsComponent = ({ tabInfo }: TabsComponentProps): JSX.Element => {
 
 const MapsComponent = ({ locationData }: { locationData: PinsInfo[] }): JSX.Element => {
     const generateInfoForPins = () => {
-        let _pinsArr = [] as InfoBox[];
+        const _pinsArr = [] as InfoBox[];
         locationData &&
             locationData.map((data: PinsInfo) => {
-                let _pinsObj = {} as InfoBox;
+                const _pinsObj = {} as InfoBox;
                 (_pinsObj.location = data?.location),
                     (_pinsObj.addHandler = 'mouseover'),
                     (_pinsObj.infoboxOption = {
@@ -73,15 +78,19 @@ const MapsComponent = ({ locationData }: { locationData: PinsInfo[] }): JSX.Elem
     );
 };
 
-const AccessoriesComponent = (): JSX.Element => {
-    return <React.Fragment></React.Fragment>;
+const AccessoriesComponent = ({ accList }: { accList: string[] }): JSX.Element => {
+    return (
+        <React.Fragment>
+            <AccessoriesComponent accList={accList} />
+        </React.Fragment>
+    );
 };
 
 const ProductInfoComponent = (): JSX.Element => {
     return <React.Fragment></React.Fragment>;
 };
 
-const TabsMapper: { [x: string]: (props?: any) => JSX.Element } = {
+const TabsMapper: { [x: string]: (props: any) => JSX.Element } = {
     info: ProductInfoComponent,
     accessories: AccessoriesComponent,
     stores: MapsComponent,
@@ -96,7 +105,11 @@ const FAQComponent = ({ faqHeader, faqData }: FAQProps): JSX.Element => {
     );
 };
 
-const PDPTemplate = ({ MediaGalleryContent, TabInfo, FAQData }: PDPTemplateProps): JSX.Element => {
+const PDPTemplate = ({
+    MediaGalleryContent,
+    TabInfo,
+    FAQData,
+}: PDPTemplateProps): JSX.Element => {
     return (
         <div className="pdp">
             <div className="pdp-data">
