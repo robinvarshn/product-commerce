@@ -1,11 +1,11 @@
 export type InfoData = {
     title: string;
-    description: string;
+    description?: string;
 };
 
 export type InfoBox = {
     location: number[];
-    addHandler: string;
+    addHandler?: string;
     infoboxOption: InfoData;
     pushPinOption: InfoData;
 };

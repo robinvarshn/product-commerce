@@ -13,8 +13,8 @@
         box-sizing: border-box;
         cursor: pointer;
         display: block;
-        padding: 2rem 3rem 2rem 2rem;
         font-size: $u-heading-6;
+        padding: 2rem 3rem 2rem 2rem;
         position: relative;
         width: 100%;
 
@@ -24,12 +24,12 @@
 
         &::after {
             content: '\002B';
-            position: absolute;
-            top: 45%;
-            right: 2%;
-            font-weight: 500;
-            transform: translate(-50%, -50%);
             font-size: $u-heading-2;
+            font-weight: 500;
+            position: absolute;
+            right: 2%;
+            top: 45%;
+            transform: translate(-50%, -50%);
             transition: transform 0.3s ease;
 
             @media (min-width: $media-phone-breakpoint) {
@@ -38,15 +38,15 @@
         }
 
         &-open::after {
-            transition: transform 0.3s ease;
             transform: translate(-50%, -50%) rotate(45deg);
+            transition: transform 0.3s ease;
         }
     }
 
     &__panel {
+        font-size: $u-medium-text;
         overflow: hidden;
         padding: 0 5rem 0 2rem;
-        font-size: $u-medium-text;
         transition: max-height 0.5s ease;
         @media (min-width: $media-phone-breakpoint) {
             font-size: $u-heading-5;

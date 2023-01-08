@@ -9,7 +9,7 @@
 
     &__tab {
         font-size: $u-heading-6;
-        font-weight: 600;
+        font-weight: 500;
 
         @media (min-width: $media-phone-breakpoint) {
             font-size: $u-heading-4;
@@ -25,6 +25,7 @@
             border: 0;
             border-bottom: 3px solid $color-global-black;
             bottom: unset;
+            font-weight: 600;
         }
     }
 

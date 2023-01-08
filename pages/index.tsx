@@ -5,6 +5,7 @@ import Seo from 'components/seo';
 import Teaser from 'components/teaser';
 import Text from 'components/text';
 import React from 'react';
+import 'regenerator-runtime/runtime';
 import CardData from '.././sample/cardCategory.json';
 import FeatureData from '.././sample/cardFeatures.json';
 

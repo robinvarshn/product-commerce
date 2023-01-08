@@ -3,6 +3,7 @@ import { NextRouter, useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
 import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition';
 import { ReactSVG } from 'react-svg';
+import 'regenerator-runtime/runtime';
 import { KeywordMapper, ResultSet } from './utility';
 
 const VoiceAssistant = (): JSX.Element => {

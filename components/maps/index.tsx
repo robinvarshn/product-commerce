@@ -1,15 +1,15 @@
 import '@styles/_maps.scss';
+import getConfig from 'next/config';
 import dynamic from 'next/dynamic';
 import { useEffect, useState } from 'react';
-import MapsData from '../../sample/locationInfo.json';
-import { BingMapsProps, InfoContainer } from './maps';
+import { InfoContainer } from './maps';
 
 const ReactBingmaps = dynamic(() => import('@/maps'), { ssr: false });
 
-const BingMaps = ({ mapsApiKey }: BingMapsProps): JSX.Element => {
-    const [info, setInfo] = useState<InfoContainer>({} as InfoContainer);
+const BingMaps = ({ infoboxesWithPushPins }: InfoContainer): JSX.Element => {
     const [lat, setLat] = useState<number | null>(null);
     const [lng, setLng] = useState<number | null>(null);
+    const { publicRuntimeConfig } = getConfig();
 
     const getLocation = () => {
         if (!navigator.geolocation) {
@@ -27,7 +27,6 @@ const BingMaps = ({ mapsApiKey }: BingMapsProps): JSX.Element => {
 
     useEffect(() => {
         getLocation();
-        setInfo(MapsData);
     }, []);
 
     return (
@@ -38,8 +37,8 @@ const BingMaps = ({ mapsApiKey }: BingMapsProps): JSX.Element => {
                         zoom={10}
                         id="maps"
                         center={[lat, lng]}
-                        bingmapKey={mapsApiKey}
-                        infoboxesWithPushPins={info.infoboxesWithPushPins}
+                        bingmapKey={publicRuntimeConfig.mapsApiKey}
+                        infoboxesWithPushPins={infoboxesWithPushPins}
                     ></ReactBingmaps>
                 </div>
             )}

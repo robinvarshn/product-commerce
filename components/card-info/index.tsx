@@ -1,11 +1,13 @@
 import '@styles/_cardInfo.scss';
 import FadeInSection from 'components/fading';
 import ModalComponent from 'components/modal';
-import ObjectDetection from 'components/object-detection';
-import VoiceAssistant from 'components/voice-assistant';
+import dynamic from 'next/dynamic';
 import Image from 'next/legacy/image';
 import React, { useState } from 'react';
 import { CardInfoTypes } from './card-info';
+
+const ObjectDetection = dynamic(() => import('components/object-detection'));
+const VoiceAssistant = dynamic(() => import('components/voice-assistant'));
 
 const CardInfo = ({
     cardText,

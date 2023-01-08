@@ -1,5 +1,6 @@
 import '@styles/_object-detection.scss';
-import * as cocossd from '@tensorflow-models/coco-ssd';
+import type * as cocossd from '@tensorflow-models/coco-ssd';
+import { load } from '@tensorflow-models/coco-ssd/dist/index';
 import '@tensorflow/tfjs';
 import { ResultSet } from 'components/voice-assistant/utility';
 import { NextRouter, useRouter } from 'next/router';
@@ -49,7 +50,7 @@ const ObjectDetection = (): JSX.Element => {
     };
 
     const initialCoco = async () => {
-        const net: cocossd.ObjectDetection = await cocossd.load();
+        const net: cocossd.ObjectDetection = await load();
         setInterval(() => {
             detectObj(net);
         }, 10);

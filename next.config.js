@@ -6,6 +6,9 @@
 
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const globImporter = require('node-sass-glob-importer');
+const withBundleAnalyzer = require('@next/bundle-analyzer')({
+    enabled: process.env.ANALYZE === 'true',
+});
 const nextConfig = {
     useFileSystemPublicRoutes: true,
     images: {
@@ -63,4 +66,4 @@ const nextConfig = {
     },
 };
 
-module.exports = nextConfig;
+module.exports = withBundleAnalyzer(nextConfig);
