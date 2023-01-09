@@ -2,6 +2,9 @@ import AccordionWrapper from 'components/accordion';
 import BingMaps from 'components/maps';
 import { InfoBox } from 'components/maps/maps';
 import { MediaGalleryTypes } from 'components/media-gallery/media-gallery';
+import ProductAccessories from 'components/product-accessories';
+import ProductInfo from 'components/product-info';
+import { ProductInfoTypes } from 'components/product-info/product-info.tsx';
 import TabsWrapper from 'components/tabs';
 import type { Tablist } from 'components/tabs/tabs';
 import Text from 'components/text';
@@ -11,8 +14,13 @@ import type {
     FAQProps,
     PDPTemplateProps,
     PinsInfo,
+    PinsObj,
+    StoreProps,
     TabsComponentProps,
 } from './pdp-template';
+
+import '@layout/_pdp.scss';
+import OfflineStoreWrapper from 'components/offline-stores';
 
 const MediaGallery = dynamic(() => import('components/media-gallery'), {
     ssr: false,
@@ -49,20 +57,29 @@ const TabsComponent = ({ tabInfo }: TabsComponentProps): JSX.Element => {
     );
 };
 
-const MapsComponent = ({ locationData }: { locationData: PinsInfo[] }): JSX.Element => {
+const StoreComponent = ({ storeData, locationData }: StoreProps): JSX.Element => {
+    return (
+        <React.Fragment>
+            <OfflineStoreWrapper {...storeData} />
+            <MapsComponent {...locationData} />
+        </React.Fragment>
+    );
+};
+
+const MapsComponent = ({ title, pins }: PinsInfo): JSX.Element => {
     const generateInfoForPins = () => {
         const _pinsArr = [] as InfoBox[];
-        locationData &&
-            locationData.map((data: PinsInfo) => {
+        pins &&
+            pins.map((data: PinsObj) => {
                 const _pinsObj = {} as InfoBox;
                 (_pinsObj.location = data?.location),
                     (_pinsObj.addHandler = 'mouseover'),
                     (_pinsObj.infoboxOption = {
                         title: data?.title,
+                        description: data?.description,
                     });
                 _pinsObj.pushPinOption = {
-                    title: data?.title,
-                    description: data?.description,
+                    title: '',
                 };
 
                 _pinsArr.push(_pinsObj);
@@ -73,7 +90,7 @@ const MapsComponent = ({ locationData }: { locationData: PinsInfo[] }): JSX.Elem
 
     return (
         <React.Fragment>
-            <BingMaps infoboxesWithPushPins={generateInfoForPins()} />
+            <BingMaps title={title} infoboxesWithPushPins={generateInfoForPins()} />
         </React.Fragment>
     );
 };
@@ -81,19 +98,23 @@ const MapsComponent = ({ locationData }: { locationData: PinsInfo[] }): JSX.Elem
 const AccessoriesComponent = ({ accList }: { accList: string[] }): JSX.Element => {
     return (
         <React.Fragment>
-            <AccessoriesComponent accList={accList} />
+            <ProductAccessories accList={accList} />
         </React.Fragment>
     );
 };
 
-const ProductInfoComponent = (): JSX.Element => {
-    return <React.Fragment></React.Fragment>;
+const ProductInfoComponent = ({ features, tags }: ProductInfoTypes): JSX.Element => {
+    return (
+        <React.Fragment>
+            <ProductInfo features={features} tags={tags} />
+        </React.Fragment>
+    );
 };
 
 const TabsMapper: { [x: string]: (props: any) => JSX.Element } = {
     info: ProductInfoComponent,
     accessories: AccessoriesComponent,
-    stores: MapsComponent,
+    stores: StoreComponent,
 };
 
 const FAQComponent = ({ faqHeader, faqData }: FAQProps): JSX.Element => {

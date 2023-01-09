@@ -1,1 +1,4 @@
-export type ProductInfo = {};
+export type ProductInfoTypes = {
+    features: string[];
+    tags: string[];
+};

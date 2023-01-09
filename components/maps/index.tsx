@@ -12,8 +12,8 @@ const MapsConfig = {
 };
 
 const BingMaps = ({ title, infoboxesWithPushPins }: InfoContainer): JSX.Element => {
-    const [lat, setLat] = useState<number | null>(12.924314316915833);
-    const [lng, setLng] = useState<number | null>(77.69543204);
+    const [lat, setLat] = useState<number | null>(null);
+    const [lng, setLng] = useState<number | null>(null);
     const { publicRuntimeConfig } = getConfig();
     const [windowWidth] = useWindowSize({ fps: 60 });
 
@@ -23,8 +23,8 @@ const BingMaps = ({ title, infoboxesWithPushPins }: InfoContainer): JSX.Element 
         } else {
             navigator.geolocation.getCurrentPosition(
                 (position) => {
-                    // setLat(position.coords.latitude);
-                    // setLng(position.coords.longitude);
+                    setLat(position.coords.latitude);
+                    setLng(position.coords.longitude);
                 },
                 () => {},
             );
