@@ -35,8 +35,6 @@ const BingMaps = ({ title, infoboxesWithPushPins }: InfoContainer): JSX.Element 
         getLocation();
     }, []);
 
-    console.log(infoboxesWithPushPins);
-
     return (
         <div className="bing">
             {lat && lng && (
