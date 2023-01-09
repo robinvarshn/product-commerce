@@ -1,1 +1,43 @@
 @import '../globalImports.scss';
+
+.pdp {
+    padding: 2rem 1rem;
+
+    @media (min-width: $media-phone-breakpoint) {
+        padding: 3rem 13vw;
+    }
+
+    &-gallery {
+        @media (min-width: $media-phone-breakpoint) {
+            align-self: flex-start;
+            bottom: 0;
+            position: sticky;
+            top: 18.5rem;
+        }
+    }
+
+    &-data {
+        display: flex;
+        flex-direction: column;
+        gap: 5rem;
+        justify-content: space-between;
+
+        @media (min-width: $media-phone-breakpoint) {
+            flex-direction: row;
+        }
+    }
+
+    &-content {
+        flex: 0 0 52%;
+        @media (min-width: $media-phone-breakpoint) {
+            min-height: 58vh;
+        }
+    }
+
+    &-faq {
+        margin-top: 5rem;
+        @media (min-width: $media-phone-breakpoint) {
+            margin-top: 15rem;
+        }
+    }
+}

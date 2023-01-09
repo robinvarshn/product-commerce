@@ -1,3 +1,3 @@
-export type ProductAccessories = {
+export type ProductAccessoriesTypes = {
     accList: string[];
 };

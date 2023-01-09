@@ -20,41 +20,52 @@ const nextConfig = {
     reactStrictMode: true,
     swcMinify: true,
     webpack: (config) => {
-        config.module.rules.push({
-            test: /\.scss$/,
-            use: [
-                MiniCssExtractPlugin.loader,
-                {
-                    loader: 'css-loader',
-                    options: {
-                        url: false,
-                    },
-                },
-                {
-                    loader: 'postcss-loader',
-                    options: {
-                        postcssOptions: {
-                            plugins: [['autoprefixer']],
+        config.module.rules.push(
+            {
+                test: /\.scss$/,
+                use: [
+                    MiniCssExtractPlugin.loader,
+                    {
+                        loader: 'css-loader',
+                        options: {
+                            url: false,
                         },
                     },
-                },
-                {
-                    loader: 'sass-loader',
-                    options: {
-                        sourceMap: false,
-                        sassOptions: {
-                            importer: globImporter(),
+                    {
+                        loader: 'postcss-loader',
+                        options: {
+                            postcssOptions: {
+                                plugins: [['autoprefixer']],
+                            },
                         },
                     },
-                },
-                {
-                    loader: 'webpack-import-glob-loader',
-                    options: {
-                        url: false,
+                    {
+                        loader: 'sass-loader',
+                        options: {
+                            sourceMap: false,
+                            sassOptions: {
+                                importer: globImporter(),
+                            },
+                        },
                     },
-                },
-            ],
-        });
+                    {
+                        loader: 'webpack-import-glob-loader',
+                        options: {
+                            url: false,
+                        },
+                    },
+                ],
+            },
+            {
+                test: /\.svg$/,
+                use: ['svg-loader'],
+            },
+            {
+                test: /\.(eot|woff|woff2|svg|ttf)([\?]?.*)$/,
+                use: ['file-loader'],
+            },
+            { test: /\.(png|woff|woff2|eot|ttf|svg)$/, use: ['url-loader?limit=100000'] },
+        );
         config.plugins.push(
             new MiniCssExtractPlugin({
                 filename: 'static/css/[contenthash].css',

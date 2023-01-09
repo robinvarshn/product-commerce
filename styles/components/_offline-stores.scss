@@ -1,0 +1,20 @@
+@import '../globalImports.scss';
+
+.offline-store {
+    &__title {
+        font-size: $u-heading-5;
+        font-weight: 600;
+        letter-spacing: 0.25rem;
+        margin-top: 2.5rem;
+        padding-left: 0.5rem;
+        text-transform: uppercase;
+
+        @media (min-width: $media-phone-breakpoint) {
+            font-size: $u-heading-4;
+        }
+    }
+
+    &__stores {
+        padding: 0 2rem;
+    }
+}

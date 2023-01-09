@@ -1,1 +1,9 @@
+/* stylelint-disable-line */
 @import 'react-image-gallery/styles/css/image-gallery.css';
+@import '../constants/configs';
+
+.image-gallery {
+    &-image {
+        width: 100%;
+    }
+}

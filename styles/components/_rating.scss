@@ -1,9 +1,9 @@
-@import '../globalImports.scss';
+@import '../constants/configs';
 
 :root {
-    --rating-size: 2.75rem;
+    --rating-size: 2.4rem;
     --rating-color: #a7aaac;
-    --rating-background: $color-global-black;
+    --rating-background: #000;
 }
 
 .rating {
@@ -11,8 +11,7 @@
     display: inline-block;
     font-size: var(--rating-size);
     line-height: 1;
-    margin: 2rem 0;
-    text-align: center;
+    margin: 0.75rem 0;
     width: 100%;
 
     &::before {

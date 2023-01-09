@@ -12,6 +12,7 @@ export type InfoBox = {
 
 export type InfoContainer = {
     infoboxesWithPushPins: InfoBox[];
+    title?: string;
 };
 
 export type BingMapsProps = {

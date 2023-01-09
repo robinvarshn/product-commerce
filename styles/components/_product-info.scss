@@ -1,1 +1,84 @@
 @import '../constants/configs';
+
+.product-info {
+    padding: 2rem 1.5rem;
+
+    &__title {
+        font-size: $u-heading-4;
+        font-weight: bold;
+
+        @media (min-width: $media-phone-breakpoint) {
+            font-size: $u-heading-2;
+        }
+    }
+
+    &__stars {
+        display: inline-block;
+    }
+
+    &__reviews {
+        color: $color-shade-5;
+        font-size: $u-medium-text;
+        font-weight: bold;
+        margin: 1rem 0;
+
+        @media (min-width: $media-phone-breakpoint) {
+            display: inline-block;
+            font-size: $u-large-text;
+            margin: 0 2rem;
+        }
+    }
+
+    &__pricing {
+        font-size: $u-heading-4;
+        font-weight: bold;
+        letter-spacing: 0.25rem;
+        margin: 1.75rem 0;
+    }
+
+    &__featuretitle,
+    &__tagstitle {
+        font-size: $u-heading-5;
+        font-weight: 600;
+        letter-spacing: 0.25rem;
+        margin-top: 2.5rem;
+    }
+
+    &__featurelist {
+        margin: 0;
+        padding: 0 2rem;
+    }
+
+    &__featureitem {
+        font-size: $u-large-text;
+
+        @media (min-width: $media-phone-breakpoint) {
+            font-size: $u-heading-5;
+        }
+    }
+
+    &__taglist {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    &__tagitem {
+        background-color: $color-global-black;
+        border: 2px solid $color-global-black;
+        border-radius: 3rem;
+        color: $color-global-white;
+        display: inline-block;
+        font-size: $u-heading-6;
+        font-weight: bold;
+        letter-spacing: 0.2rem;
+        margin: 1rem 0.75rem 1rem 0.25rem;
+        padding: 1rem 2rem;
+        text-transform: uppercase;
+
+        @media (min-width: $media-phone-breakpoint) {
+            font-size: $u-heading-5;
+            padding: 1.25rem 2.5rem;
+        }
+    }
+}

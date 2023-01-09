@@ -5,6 +5,7 @@ import type { AppProps } from 'next/app';
 import Head from 'next/head';
 import NextNProgress from 'nextjs-progressbar';
 import React, { ReactElement } from 'react';
+import ScrollIndicator from 'scroll-indicator';
 import '../styles/globalLayout.scss';
 
 export type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {
@@ -21,9 +22,10 @@ function AppLayout({ children }: { children: ReactElement }) {
             <Head>
                 <link rel="shortcut icon" href="/header-logo.png" />
             </Head>
+            <ScrollIndicator bgColor="#182847" height="4px" />
             <Header />
-            <main className="main-content">
-                <NextNProgress color="#103be6" />
+            <main className={`main-content`}>
+                <NextNProgress color="#182847" />
                 {children}
             </main>
             <Footer />

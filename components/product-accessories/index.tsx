@@ -1,7 +1,7 @@
-import '@styles/_product-accessories';
-import { ProductAccessories } from './product-accessories';
+import '@styles/_product-accessories.scss';
+import { ProductAccessoriesTypes } from './product-accessories';
 
-const ProductAccessories = ({ accList }: ProductAccessories): JSX.Element => {
+const ProductAccessories = ({ accList }: ProductAccessoriesTypes): JSX.Element => {
     return (
         <div className="accessories">
             <ul className="accessories__list">

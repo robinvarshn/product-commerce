@@ -6,7 +6,7 @@ import { Tablist, TabProps } from './tabs';
 const TabsWrapper = ({ tabList }: TabProps): JSX.Element => {
     return (
         <React.Fragment>
-            <Tabs>
+            <Tabs forceRenderTabPanel={true}>
                 <TabList>
                     {tabList.map((tabData: Tablist, index: number) => {
                         return (
