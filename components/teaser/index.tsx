@@ -1,28 +1,28 @@
 import '@styles/_teaser.scss';
 import Text from 'components/text';
-import Image from 'next/legacy/image';
+import Image from 'next/image';
 import React from 'react';
 import { TeaserProps } from './teaser';
 
-const Teaser = ({ imageURL }: TeaserProps): JSX.Element => {
+const Teaser = ({ imageURL, fallBackURL, title }: TeaserProps): JSX.Element => {
     return (
         <React.Fragment>
             <div className={`teaser`}>
                 <div className="cmp-teaser">
                     <div className="cmp-teaser__text">
-                        <Text textData="Retail AI: The Next GEN Online Purchase Solution" />
+                        <Text textData={title} />
                     </div>
                     <div className="cmp-teaser__image">
                         {imageURL && (
                             <Image
-                                priority
-                                src={`/hero-banner.jpeg`}
-                                layout="fill"
+                                src={imageURL}
+                                fill={true}
                                 alt={''}
+                                placeholder="blur"
+                                blurDataURL={fallBackURL}
                             />
                         )}
                         <div className="cmp-teaser__divider" />
-                        {/* placeholder="blur" blurDataURL={''} */}
                     </div>
                 </div>
             </div>

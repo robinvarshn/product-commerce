@@ -15,11 +15,9 @@
     width: 100%;
 
     &::before {
-        background: linear-gradient(
-            90deg,
-            var(--rating-background) var(--percent),
-            var(--rating-color) var(--percent)
-        );
+        background: linear-gradient(90deg,
+        var(--rating-background) var(--percent),
+        var(--rating-color) var(--percent));
         background-clip: text;
         content: '★★★★★';
         letter-spacing: 0.5rem;

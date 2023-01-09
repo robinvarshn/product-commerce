@@ -1,5 +1,7 @@
 import Footer from 'components/layout/footer';
+import { FooterProps } from 'components/layout/footer/footer';
 import Header from 'components/layout/header';
+import { HeaderProps } from 'components/layout/header/header';
 import type { NextPage } from 'next';
 import type { AppProps } from 'next/app';
 import Head from 'next/head';
@@ -16,28 +18,35 @@ type AppPropsWithLayout = AppProps & {
     Component: NextPageWithLayout;
 };
 
-function AppLayout({ children }: { children: ReactElement }) {
+type LayoutProps = {
+    children: ReactElement;
+    headerData: HeaderProps;
+    footerData: FooterProps;
+};
+
+function AppLayout({ headerData, footerData, children }: LayoutProps) {
     return (
         <React.Fragment>
             <Head>
                 <link rel="shortcut icon" href="/header-logo.png" />
             </Head>
             <ScrollIndicator bgColor="#182847" height="4px" />
-            <Header />
+            <Header {...headerData} />
             <main className={`main-content`}>
                 <NextNProgress color="#182847" />
                 {children}
             </main>
-            <Footer />
+            <Footer {...footerData} />
         </React.Fragment>
     );
 }
 
 function App({ Component, pageProps }: AppPropsWithLayout) {
+    const { headerData, footerData } = pageProps;
     const GernalLayout = Component.getLayout ?? (() => <></>);
 
     return (
-        <AppLayout>
+        <AppLayout headerData={headerData} footerData={footerData}>
             <React.Fragment>
                 <GernalLayout />
                 <Component {...pageProps} />

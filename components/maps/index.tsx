@@ -42,7 +42,7 @@ const BingMaps = ({ title, infoboxesWithPushPins }: InfoContainer): JSX.Element 
                     {title && <p className="bing-title">{title}</p>}
                     <div className="bing-maps">
                         <ReactBingmaps
-                            zoom={windowWidth > MapsConfig.mobileRendition ? 12 : 11}
+                            zoom={windowWidth > MapsConfig.mobileRendition ? 13 : 12}
                             id="maps"
                             center={[lat, lng]}
                             bingmapKey={publicRuntimeConfig.mapsApiKey}

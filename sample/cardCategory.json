@@ -1,14 +1,31 @@
-[
-    {
-        "cardText": "By Voice Assistance",
-        "cardSubText": "Powered By G-Speech",
-        "cardIcon": "/mike.png",
-        "type": "voice"
-    },
-    {
-        "cardText": "By Object Detection",
-        "cardSubText": "Powered By Coco-SSD Model",
-        "cardIcon": "/camera.png",
-        "type": "object"
+{
+    "cardInfo": {
+        "title": "Browse Products",
+        "categories": [
+            {
+                "cardText": "By Voice Assistance",
+                "cardSubText": "Powered By G-Speech",
+                "cardIcon": "/mike.png",
+                "type": "voice",
+                "modalData": {
+                    "broweserError": "Browser doesn't support speech recognition.",
+                    "noRes": "No result found with the given keyword",
+                    "noIP": "There was no input from your end",
+                    "micError": "Microphone is turned off. Please enable it",
+                    "tryAgain": "Try Again"
+                }
+            },
+            {
+                "cardText": "By Object Detection",
+                "cardSubText": "Powered By Coco-SSD Model",
+                "cardIcon": "/camera.png",
+                "type": "object",
+                "modalData": {
+                    "camError": "Webcam is turned off. Please enable it",
+                    "title": "Scan An Object",
+                    "subInfo": "Please make sure to place object correctly."
+                }
+            }
+        ]
     }
-]
+}

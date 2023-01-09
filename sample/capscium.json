@@ -1,0 +1,125 @@
+{
+    "tabInfo": [
+        {
+            "tag": "info",
+            "data": {
+                "features": {
+                    "title": "Why it's special",
+                    "features": [
+                        "Aids in weight loss",
+                        "Good for the heart",
+                        "Great detoxifying agent",
+                        "Immunity booster",
+                        "Improves Eyesight"
+                    ]
+                },
+                "tags": {
+                    "title": "Good to know",
+                    "tags": ["Pizza", "Protien"]
+                },
+                "productMeta": {
+                    "title": "Organic Capsicum",
+                    "rating": "3.9",
+                    "reviews": "870 Ratings And 28 Reviews",
+                    "price": "Rs. 168/kg"
+                },
+                "title": "Product Info"
+            }
+        },
+
+        {
+            "tag": "accessories",
+            "data": {
+                "accList": [
+                    "Stuffed Capsicum",
+                    "Capsicum Curry",
+                    "Vegetable Fried Rice",
+                    "Capsicum Rice"
+                ],
+                "title": "Recipes"
+            }
+        },
+
+        {
+            "tag": "stores",
+            "data": {
+                "title": "Stores",
+                "locationData": {
+                    "pins": [
+                        {
+                            "location": [12.93956107395159, 77.69874369840221],
+                            "title": "Bangalore Basket",
+                            "description": ""
+                        },
+                        {
+                            "location": [12.93295254379795, 77.70346438607207],
+                            "title": "Jagruthi P Store",
+                            "description": ""
+                        },
+                        {
+                            "location": [12.942070596490424, 77.69818579895033],
+                            "title": "Sadik Store",
+                            "description": ""
+                        },
+                        {
+                            "location": [12.934667432367634, 77.70367896278434],
+                            "title": "Jeevan Grocery Store",
+                            "description": ""
+                        },
+                        {
+                            "location": [12.947215038724895, 77.70513808442774],
+                            "title": "HM Provision Store",
+                            "description": ""
+                        }
+                    ],
+                    "title": "Offline Stores Near You"
+                },
+                "storeData": {
+                    "title": "Shop It Online",
+                    "vendors": ["fk", "am"]
+                }
+            }
+        }
+    ],
+
+    "productImages": [
+        {
+            "original": "/caps-0.webp",
+            "thumbnail": "/caps-0.webp"
+        },
+        {
+            "original": "/caps-1.webp",
+            "thumbnail": "/caps-1.webp"
+        },
+        {
+            "original": "/caps-2.webp",
+            "thumbnail": "/caps-2.webp"
+        }
+    ],
+
+    "faq": {
+        "faqData": [
+            {
+                "header": "Can I choose expedited shipping?",
+                "content": "Yes, we offer expedited FedEx services at checkout: FedEx Ground and FedEx 2 Day. Please note that when you select expedited shipping, this does not account for the order processing time of a particular product. The specific timeframe for processing and shipping can be seen directly on the product's page above the Add to Cart button."
+            },
+            {
+                "header": "Do you offer protection against fraud?",
+                "content": "Yes, Retail AI provides monetary compensation against the orders where the returned products have been damaged/ missing under 'Seller Protection Fund (SPF)' program."
+            },
+            {
+                "header": "What is a Offer Display?",
+                "content": "Offer Display is a white box on the right side of the product detail page where customers can add products for purchase. Only seller with excellent metrics and performance can avail the Offer Display."
+            },
+            {
+                "header": "Do you offer protection against fraud?",
+                "content": "Yes. Retail AI helps you protect against fraudulent orders placed on your products and payment fraud."
+            },
+            {
+                "header": "Why are there different prices for the same product? Is it legal?",
+                "content": "Retail AI is an online marketplace platform that enables independent sellers to sell their products to buyers. The prices are solely decided by the sellers, and Retail AI does not interfere in the same. There could be a possibility that the same product is sold by different sellers at different prices. Retail AI rightfully fulfils all legal compliances of onboarding multiple sellers on its forum as it is a marketplace platform."
+            }
+        ],
+        "faqHeader": "Freqently Asked Questions"
+    }
+}

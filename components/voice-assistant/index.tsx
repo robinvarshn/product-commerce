@@ -5,8 +5,15 @@ import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognitio
 import { ReactSVG } from 'react-svg';
 import 'regenerator-runtime/runtime';
 import { KeywordMapper, ResultSet } from './utility';
+import { VoiceAsistantTypes } from './voice-assistant';
 
-const VoiceAssistant = (): JSX.Element => {
+const VoiceAssistant = ({
+    browserError,
+    noRes,
+    noIP,
+    micError,
+    tryAgain,
+}: VoiceAsistantTypes): JSX.Element => {
     const [voiceError, setVoiceError] = useState<string>('');
     const [voiceWarn, setVoiceWarn] = useState<string>('');
     const [isTranscript, setTransDecision] = useState<boolean>(false);
@@ -20,7 +27,7 @@ const VoiceAssistant = (): JSX.Element => {
     } = useSpeechRecognition();
 
     if (!browserSupportsSpeechRecognition) {
-        setVoiceError("Browser doesn't support speech recognition.");
+        setVoiceError(browserError);
     }
 
     const resetMic = (): void => {
@@ -34,7 +41,7 @@ const VoiceAssistant = (): JSX.Element => {
             const checkPrediction: ResultSet = KeywordMapper(transcript);
             if (!Object.keys(checkPrediction).length) {
                 setTransDecision(true);
-                setVoiceWarn('No result found with the given keyword');
+                setVoiceWarn(noRes);
             } else {
                 router.push(
                     `/product/${checkPrediction.category}/${checkPrediction.keyword}`,
@@ -42,7 +49,7 @@ const VoiceAssistant = (): JSX.Element => {
             }
         } else if (!listening && !transcript.length && isMicrophoneAvailable) {
             setTransDecision(true);
-            setVoiceWarn('There was no input from your end');
+            setVoiceWarn(noIP);
         } else {
             setTransDecision(false);
         }
@@ -52,7 +59,7 @@ const VoiceAssistant = (): JSX.Element => {
         if (isMicrophoneAvailable) {
             SpeechRecognition.startListening();
         } else {
-            setVoiceError('Microphone is turned off. Please enable it');
+            setVoiceError(micError);
         }
         () => {
             SpeechRecognition.stopListening();
@@ -70,7 +77,7 @@ const VoiceAssistant = (): JSX.Element => {
                     <div className="voice-notranscript">
                         <p className="voice-warn">{voiceWarn}</p>
                         <button className="voice-try" onClick={() => resetMic()}>
-                            Try Again ?
+                            {tryAgain}
                         </button>
                     </div>
                 ) : (

@@ -41,6 +41,7 @@
         "sass": "^1.54.4",
         "sass-loader": "^13.0.2",
         "scroll-indicator": "^1.0.0",
+        "sharp": "^0.31.3",
         "stylelint": "^14.9.1",
         "stylelint-config-prettier": "^9.0.4",
         "stylelint-config-recommended": "^8.0.0",

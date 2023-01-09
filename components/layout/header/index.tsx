@@ -1,8 +1,9 @@
 import '@styles/_header.scss';
 import Image from 'next/legacy/image';
 import Link from 'next/link';
+import { HeaderProps } from './header';
 
-const Header = (): JSX.Element => {
+const Header = ({ headerLogo }: HeaderProps): JSX.Element => {
     return (
         <header className="header">
             <nav className="header__container">
@@ -12,7 +13,7 @@ const Header = (): JSX.Element => {
                             <a className="header__logo">
                                 <Image
                                     className="header__image"
-                                    src={'/header-logo.png'}
+                                    src={headerLogo}
                                     layout="fill"
                                     alt={''}
                                 />

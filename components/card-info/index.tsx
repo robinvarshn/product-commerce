@@ -15,6 +15,7 @@ const CardInfo = ({
     cardIcon,
     cardType,
     type,
+    modalData,
 }: CardInfoTypes): JSX.Element => {
     const [isModalOpen, setModal] = useState<boolean>(false);
     return (
@@ -44,7 +45,11 @@ const CardInfo = ({
                 </div>
             </FadeInSection>
             <ModalComponent isOpen={isModalOpen} setModal={setModal}>
-                {type === 'voice' ? <VoiceAssistant /> : <ObjectDetection />}
+                {type === 'voice' ? (
+                    <VoiceAssistant {...modalData} />
+                ) : (
+                    <ObjectDetection {...modalData} />
+                )}
             </ModalComponent>
         </React.Fragment>
     );

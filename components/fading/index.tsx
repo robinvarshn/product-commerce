@@ -26,7 +26,7 @@ const FadeInSection = ({ children, type }: FadeInProps) => {
 
     return (
         <div
-            className={`fade-in-section ${isIntersected ? 'is-visible' : ''} ${type}`}
+            className={`fade-in-section ${(isIntersected && 'is-visible') ?? ''} ${type}`}
             ref={domRef}
         >
             {children}

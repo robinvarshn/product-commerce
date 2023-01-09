@@ -4,22 +4,32 @@ import FadeInSection from 'components/fading';
 import Seo from 'components/seo';
 import Teaser from 'components/teaser';
 import Text from 'components/text';
+import { GetServerSideProps, GetServerSidePropsContext } from 'next';
 import React from 'react';
 import 'regenerator-runtime/runtime';
 import CardData from '.././sample/cardCategory.json';
 import FeatureData from '.././sample/cardFeatures.json';
+import FooterData from '.././sample/footer.json';
+import HeaderData from '.././sample/header.json';
+import TeaserData from '.././sample/homePage.json';
 
-const Home = (): JSX.Element => {
+const Home = ({
+    teaserData,
+    cardData,
+    featureData,
+}: {
+    [x: string]: any;
+}): JSX.Element => {
     return (
         <React.Fragment>
             <Seo pageTitle="Home" />
             <section className="homepage">
-                <Teaser imageURL="/" />
-                <Text textData="Browse Products" />
-                {CardData && (
+                <Teaser {...teaserData} />
+                <Text textData={cardData?.title} />
+                {cardData.categories && (
                     <React.Fragment>
                         <div className="homepage-productsearch">
-                            {CardData.map((data: any, index: number) => (
+                            {cardData.categories.map((data: any, index: number) => (
                                 <React.Fragment key={index}>
                                     <CardInfo
                                         cardText={data.cardText}
@@ -27,6 +37,7 @@ const Home = (): JSX.Element => {
                                         cardIcon={data.cardIcon}
                                         cardType="products"
                                         type={data.type}
+                                        modalData={data.modalData}
                                     />
                                 </React.Fragment>
                             ))}
@@ -36,14 +47,16 @@ const Home = (): JSX.Element => {
                 <FadeInSection>
                     <React.Fragment>
                         <div className="homepage-feature">
-                            <Text textData="Features Provided" />
+                            <Text textData={featureData?.title} />
                         </div>
-                        {FeatureData && (
+                        {featureData.features && (
                             <div className="homepage-list">
                                 <ul>
-                                    {FeatureData.map((data, index) => (
-                                        <li key={index}>{data}</li>
-                                    ))}
+                                    {featureData.features.map(
+                                        (data: string, index: number) => (
+                                            <li key={index}>{data}</li>
+                                        ),
+                                    )}
                                 </ul>
                             </div>
                         )}
@@ -52,6 +65,20 @@ const Home = (): JSX.Element => {
             </section>
         </React.Fragment>
     );
+};
+
+export const getServerSideProps: GetServerSideProps = async (
+    context: GetServerSidePropsContext,
+) => {
+    return {
+        props: {
+            headerData: HeaderData,
+            footerData: FooterData,
+            teaserData: TeaserData?.teaser,
+            cardData: CardData?.cardInfo,
+            featureData: FeatureData,
+        },
+    };
 };
 
 export default Home;

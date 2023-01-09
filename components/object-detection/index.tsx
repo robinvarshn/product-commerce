@@ -6,9 +6,14 @@ import { ResultSet } from 'components/voice-assistant/utility';
 import { NextRouter, useRouter } from 'next/router';
 import React, { useEffect, useRef, useState } from 'react';
 import Webcam from 'react-webcam';
+import { ObjectDetectionTypes } from './object-detection';
 import { drawRect, ResultMapper } from './utilities';
 
-const ObjectDetection = (): JSX.Element => {
+const ObjectDetection = ({
+    title,
+    subInfo,
+    camError,
+}: ObjectDetectionTypes): JSX.Element => {
     const [isWebcamError, setWebCamError] = useState<boolean>(false);
     const webcamRef = useRef<Webcam>({} as Webcam);
     const canvasRef = useRef<HTMLCanvasElement>({} as HTMLCanvasElement);
@@ -63,14 +68,12 @@ const ObjectDetection = (): JSX.Element => {
     return (
         <div className="object-detection">
             {isWebcamError ? (
-                <div className="object-detection__error">
-                    Webcam is turned off. Please enable it
-                </div>
+                <div className="object-detection__error">{camError}</div>
             ) : (
                 <React.Fragment>
                     <div className="object-detection__data">
                         <div className="object-detection__desc">
-                            <p className="object-detection__header">Scan An Object</p>
+                            <p className="object-detection__header">{title}</p>
                         </div>
                         <div className="object-detection__container">
                             <div className="object-detection__img">
@@ -87,9 +90,7 @@ const ObjectDetection = (): JSX.Element => {
                             </div>
                         </div>
                         <div className="object-detection__disc">
-                            <p className="object-detection__note">
-                                Please make sure to place object correctly.
-                            </p>
+                            <p className="object-detection__note">{subInfo}</p>
                         </div>
                     </div>
                 </React.Fragment>
