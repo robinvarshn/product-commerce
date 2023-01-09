@@ -1,8 +1,21 @@
 @import '../constants/configs';
 
 .bing {
+    &-title {
+        font-size: $u-heading-5;
+        font-weight: 600;
+        letter-spacing: 0.25rem;
+        margin-top: 2.5rem;
+        padding-left: 0.5rem;
+        text-transform: uppercase;
+
+        @media (min-width: $media-phone-breakpoint) {
+            font-size: $u-heading-4;
+        }
+    }
+
     &-maps {
-        border: 1px solid $color-global-black;
+        border: 0.3rem solid $color-global-black;
         float: left;
         height: 40rem;
         margin: 0.5rem;
@@ -10,7 +23,8 @@
         width: 100%;
 
         @media (min-width: $media-phone-breakpoint) {
-            width: 40rem;
+            height: 50rem;
+            width: 100%;
         }
     }
 }
