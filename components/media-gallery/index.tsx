@@ -40,13 +40,9 @@ const MediaGallery = ({ images }: MediaGalleryTypes): JSX.Element => {
                     showIndex={true}
                     showBullets={true}
                     showFullscreenButton={false}
-                    showThumbnails={
-                        windowWidth > MediaGalleryConfig.mobileRendition ?? false
-                    }
+                    showThumbnails={windowWidth > MediaGalleryConfig.mobileRendition ?? false}
                     thumbnailPosition={
-                        windowWidth > MediaGalleryConfig.mobileRendition
-                            ? 'left'
-                            : 'bottom'
+                        windowWidth > MediaGalleryConfig.mobileRendition ? 'left' : 'bottom'
                     }
                 />
             )}

@@ -9,12 +9,11 @@ import Webcam from 'react-webcam';
 import { ObjectDetectionTypes } from './object-detection';
 import { drawRect, ResultMapper } from './utilities';
 
-const ObjectDetection = ({
-    title,
-    subInfo,
-    camError,
-}: ObjectDetectionTypes): JSX.Element => {
+const RouteDelay = 2500;
+
+const ObjectDetection = ({ title, subInfo, camError }: ObjectDetectionTypes): JSX.Element => {
     const [isWebcamError, setWebCamError] = useState<boolean>(false);
+    const matchRef = useRef<boolean>(false);
     const webcamRef = useRef<Webcam>({} as Webcam);
     const canvasRef = useRef<HTMLCanvasElement>({} as HTMLCanvasElement);
     const router: NextRouter = useRouter();
@@ -35,7 +34,10 @@ const ObjectDetection = ({
 
     const keywordDecision = (resultSet: ResultSet) => {
         if (Object.keys(resultSet).length) {
-            router.push(`/product/${resultSet.category}/${resultSet.keyword}`);
+            matchRef.current = true;
+            setTimeout(() => {
+                router.push(`/product/${resultSet.category}/${resultSet.keyword}`);
+            }, RouteDelay);
         }
     };
 
@@ -50,7 +52,7 @@ const ObjectDetection = ({
             const ctx = canvasRef.current?.getContext('2d');
             const resultSet: ResultSet = ResultMapper(obj);
             drawRect(obj, ctx);
-            keywordDecision(resultSet);
+            !matchRef.current && keywordDecision(resultSet);
         }
     };
 
@@ -83,10 +85,7 @@ const ObjectDetection = ({
                                     className="object-detection__video"
                                     onUserMediaError={() => setWebCamError(true)}
                                 />
-                                <canvas
-                                    ref={canvasRef}
-                                    className="object-detection__canvas"
-                                />
+                                <canvas ref={canvasRef} className="object-detection__canvas" />
                             </div>
                         </div>
                         <div className="object-detection__disc">
