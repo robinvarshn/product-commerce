@@ -10,5 +10,9 @@
     {
         "keyword": "iphone",
         "category": "electronic"
+    },
+    {
+        "keyword": "shoes",
+        "category": "footwear"
     }
 ]

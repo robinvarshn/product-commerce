@@ -23,11 +23,7 @@ const GroceryCategory = ({ productname, ...props }: { productname: string }) => 
         <React.Fragment>
             {<Seo pageTitle={capitalizeFirst(productname)} />}
             <section>
-                <PDPTemplate
-                    MediaGalleryContent={images}
-                    FAQData={faqData}
-                    TabInfo={tabInfo}
-                />
+                <PDPTemplate MediaGalleryContent={images} FAQData={faqData} TabInfo={tabInfo} />
             </section>
         </React.Fragment>
     );

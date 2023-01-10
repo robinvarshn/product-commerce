@@ -1,0 +1,111 @@
+{
+    "tabInfo": [
+        {
+            "tag": "info",
+            "data": {
+                "features": {
+                    "title": "Why it's special",
+                    "features": [
+                        "Lightweight and responsive ULTRA GO® cushioning",
+                        "Sleek Mesh fabric Upper in a lace up design",
+                        "Flexible rubber traction outsole",
+                        "Skechers® and GOrun Elevate logo details"
+                    ]
+                },
+                "tags": {
+                    "title": "Good to know",
+                    "tags": ["Nike", "Comfort", "Leather"]
+                },
+                "productMeta": {
+                    "title": "Kartfill",
+                    "rating": "4.6",
+                    "reviews": "132 Ratings And 12 Reviews",
+                    "price": "Rs. 1200"
+                },
+                "title": "Info"
+            }
+        },
+
+        {
+            "tag": "accessories",
+            "data": {
+                "accList": ["Shoe Polish", "Shoe Shaper", "Sole Guard", "Rubber Tips"],
+                "title": "Accessories"
+            }
+        },
+
+        {
+            "tag": "stores",
+            "data": {
+                "title": "Stores",
+                "locationData": {
+                    "pins": [
+                        {
+                            "location": [12.93215015322209, 77.685281734820368],
+                            "title": "Nike Store",
+                            "description": ""
+                        },
+                        {
+                            "location": [12.927592884950197, 77.67624889054805],
+                            "title": "Anand Footwear",
+                            "description": ""
+                        }
+                    ],
+                    "title": "Offline Stores Near You"
+                },
+                "storeData": {
+                    "title": "Shop It Online",
+                    "vendors": ["fk", "am"]
+                }
+            }
+        },
+
+        {
+            "tag": "tryout",
+            "data": {
+                "title": "Tryout",
+                "tryoutData": {
+                    "title": "Move the camera towards your foot",
+                    "camError": "Webcam is turned off. Please enable it"
+                }
+            }
+        }
+    ],
+
+    "productImages": [
+        {
+            "original": "/shoes-0.webp",
+            "thumbnail": "/shoes-0.webp"
+        },
+        {
+            "original": "/shoes-1.webp",
+            "thumbnail": "/shoes-1.webp"
+        }
+    ],
+
+    "faq": {
+        "faqData": [
+            {
+                "header": "Can I choose expedited shipping?",
+                "content": "Yes, we offer expedited FedEx services at checkout: FedEx Ground and FedEx 2 Day. Please note that when you select expedited shipping, this does not account for the order processing time of a particular product. The specific timeframe for processing and shipping can be seen directly on the product's page above the Add to Cart button."
+            },
+            {
+                "header": "Do you offer protection against fraud?",
+                "content": "Yes, Retail AI provides monetary compensation against the orders where the returned products have been damaged/ missing under 'Seller Protection Fund (SPF)' program."
+            },
+            {
+                "header": "What is a Offer Display?",
+                "content": "Offer Display is a white box on the right side of the product detail page where customers can add products for purchase. Only seller with excellent metrics and performance can avail the Offer Display."
+            },
+            {
+                "header": "Do you offer protection against fraud?",
+                "content": "Yes. Retail AI helps you protect against fraudulent orders placed on your products and payment fraud."
+            },
+            {
+                "header": "Why are there different prices for the same product? Is it legal?",
+                "content": "Retail AI is an online marketplace platform that enables independent sellers to sell their products to buyers. The prices are solely decided by the sellers, and Retail AI does not interfere in the same. There could be a possibility that the same product is sold by different sellers at different prices. Retail AI rightfully fulfils all legal compliances of onboarding multiple sellers on its forum as it is a marketplace platform."
+            }
+        ],
+        "faqHeader": "Freqently Asked Questions"
+    }
+}

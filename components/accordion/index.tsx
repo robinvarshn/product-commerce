@@ -22,9 +22,7 @@ const AccordionItemWrapper = ({ header, content }: AccordionType): JSX.Element =
             <div className="accordion__item">
                 <div className="accordion__heading">
                     <button
-                        className={`accordion__button ${
-                            isOpen && `accordion__button-open`
-                        }`}
+                        className={`accordion__button ${isOpen && `accordion__button-open`}`}
                         onClick={() => toggleItem()}
                     >
                         {header}

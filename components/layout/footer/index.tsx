@@ -10,9 +10,7 @@ const Footer = ({ footerData }: FooterProps): JSX.Element => {
             <footer>
                 <div className="footer">
                     <div className="footer__copyright">
-                        <span className="footer__text">
-                            {footerData?.copyRightContent}
-                        </span>
+                        <span className="footer__text">{footerData?.copyRightContent}</span>
                     </div>
                     <div className="footer__brand-logo">
                         <Image
@@ -27,9 +25,7 @@ const Footer = ({ footerData }: FooterProps): JSX.Element => {
                                 return (
                                     <li className="footer__list-items" key={index}>
                                         <Link href={'/'} legacyBehavior>
-                                            <a className="footer__list-links">
-                                                {element}
-                                            </a>
+                                            <a className="footer__list-links">{element}</a>
                                         </Link>
                                     </li>
                                 );

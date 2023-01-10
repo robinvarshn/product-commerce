@@ -13,13 +13,7 @@ import FooterData from '.././sample/footer.json';
 import HeaderData from '.././sample/header.json';
 import TeaserData from '.././sample/homePage.json';
 
-const Home = ({
-    teaserData,
-    cardData,
-    featureData,
-}: {
-    [x: string]: any;
-}): JSX.Element => {
+const Home = ({ teaserData, cardData, featureData }: { [x: string]: any }): JSX.Element => {
     return (
         <React.Fragment>
             <Seo pageTitle="Home" />
@@ -52,11 +46,9 @@ const Home = ({
                         {featureData.features && (
                             <div className="homepage-list">
                                 <ul>
-                                    {featureData.features.map(
-                                        (data: string, index: number) => (
-                                            <li key={index}>{data}</li>
-                                        ),
-                                    )}
+                                    {featureData.features.map((data: string, index: number) => (
+                                        <li key={index}>{data}</li>
+                                    ))}
                                 </ul>
                             </div>
                         )}
