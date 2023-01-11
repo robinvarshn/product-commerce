@@ -43,9 +43,7 @@ const VoiceAssistant = ({
                 setTransDecision(true);
                 setVoiceWarn(noRes);
             } else {
-                router.push(
-                    `/product/${checkPrediction.category}/${checkPrediction.keyword}`,
-                );
+                router.push(`/product/${checkPrediction.category}/${checkPrediction.keyword}`);
             }
         } else if (!listening && !transcript.length && isMicrophoneAvailable) {
             setTransDecision(true);
@@ -96,9 +94,7 @@ const VoiceAssistant = ({
                 )}
             </div>
 
-            <div
-                className={`voice-mic ${!isTranscript && !voiceError && 'voice-listen'}`}
-            >
+            <div className={`voice-mic ${!isTranscript && !voiceError && 'voice-listen'}`}>
                 <ReactSVG
                     className="voice-vector"
                     src={'/mic.svg'}

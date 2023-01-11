@@ -26,6 +26,10 @@ const MediaGallery = dynamic(() => import('components/media-gallery'), {
     ssr: false,
 });
 
+const TryoutWrapper = dynamic(() => import('components/tryout'), {
+    ssr: false,
+});
+
 const MediaGalleryComponent = (props: MediaGalleryTypes): JSX.Element => {
     return <MediaGallery {...props} />;
 };
@@ -39,6 +43,11 @@ const TabsComponent = ({ tabInfo }: TabsComponentProps): JSX.Element => {
             const TabContent = TabsMapper[ele.tag];
             _tabObj['tabHeader'] = ele.data?.title;
             _tabObj['tabContent'] = TabContent(ele.data);
+            if (ele.tag === 'tryout') {
+                _tabObj['forceRender'] = false;
+            } else {
+                _tabObj['forceRender'] = true;
+            }
             return {
                 ..._tabObj,
             };
@@ -103,10 +112,18 @@ const AccessoriesComponent = ({ accList }: { accList: string[] }): JSX.Element =
     );
 };
 
-const ProductInfoComponent = ({ features, tags }: ProductInfoTypes): JSX.Element => {
+const ProductInfoComponent = ({ productMeta, features, tags }: ProductInfoTypes): JSX.Element => {
     return (
         <React.Fragment>
-            <ProductInfo features={features} tags={tags} />
+            <ProductInfo productMeta={productMeta} features={features} tags={tags} />
+        </React.Fragment>
+    );
+};
+
+const TryOutComponent = ({ tryoutData }: { [x: string]: any }): JSX.Element => {
+    return (
+        <React.Fragment>
+            <TryoutWrapper title={tryoutData.title} camError={tryoutData.camError} />
         </React.Fragment>
     );
 };
@@ -115,6 +132,7 @@ const TabsMapper: { [x: string]: (props: any) => JSX.Element } = {
     info: ProductInfoComponent,
     accessories: AccessoriesComponent,
     stores: StoreComponent,
+    tryout: TryOutComponent,
 };
 
 const FAQComponent = ({ faqHeader, faqData }: FAQProps): JSX.Element => {
@@ -126,11 +144,7 @@ const FAQComponent = ({ faqHeader, faqData }: FAQProps): JSX.Element => {
     );
 };
 
-const PDPTemplate = ({
-    MediaGalleryContent,
-    TabInfo,
-    FAQData,
-}: PDPTemplateProps): JSX.Element => {
+const PDPTemplate = ({ MediaGalleryContent, TabInfo, FAQData }: PDPTemplateProps): JSX.Element => {
     return (
         <div className="pdp">
             <div className="pdp-data">
