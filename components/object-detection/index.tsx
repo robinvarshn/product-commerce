@@ -5,6 +5,7 @@ import '@tensorflow/tfjs';
 import { ResultSet } from 'components/voice-assistant/utility';
 import { NextRouter, useRouter } from 'next/router';
 import React, { useEffect, useRef, useState } from 'react';
+import { isMobile } from 'react-device-detect';
 import Webcam from 'react-webcam';
 import { ObjectDetectionTypes } from './object-detection';
 import { drawRect, ResultMapper } from './utilities';
@@ -63,6 +64,10 @@ const ObjectDetection = ({ title, subInfo, camError }: ObjectDetectionTypes): JS
         }, 10);
     };
 
+    const videoConstraints = {
+        facingMode: isMobile ? 'environment' : 'user',
+    };
+
     useEffect(() => {
         initialCoco();
     }, []);
@@ -84,6 +89,7 @@ const ObjectDetection = ({ title, subInfo, camError }: ObjectDetectionTypes): JS
                                     muted={true}
                                     className="object-detection__video"
                                     onUserMediaError={() => setWebCamError(true)}
+                                    videoConstraints={{ ...videoConstraints }}
                                 />
                                 <canvas ref={canvasRef} className="object-detection__canvas" />
                             </div>

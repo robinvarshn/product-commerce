@@ -1,7 +1,7 @@
 import '@styles/_tryon.scss';
 import getConfig from 'next/config';
 import React, { useEffect, useRef, useState } from 'react';
-import { isIOS } from 'react-device-detect';
+import { isIOS, isMobile } from 'react-device-detect';
 import Webcam from 'react-webcam';
 import 'regenerator-runtime/runtime';
 import DeepAR from './configs/deep';
@@ -29,7 +29,7 @@ const TryoutWrapper = ({ title, camError }: { [x: string]: string }): JSX.Elemen
                 onInitialize: function () {
                     deepAR.swi;
                     deepAR.switchEffect(0, 'mask', EFFECT, function () {
-                        deepAR.setVideoElement(webcamRef?.current?.video, false);
+                        deepAR.setVideoElement(webcamRef?.current?.video, isMobile ? true : false);
                     });
                 },
             },
@@ -43,6 +43,10 @@ const TryoutWrapper = ({ title, camError }: { [x: string]: string }): JSX.Elemen
             deepAR?.stopVideo();
         };
     }, []);
+
+    const videoConstraints = {
+        facingMode: isMobile ? 'environment' : 'user',
+    };
 
     return (
         <div className="tryon">
@@ -59,6 +63,7 @@ const TryoutWrapper = ({ title, camError }: { [x: string]: string }): JSX.Elemen
                                 className="tryon__video"
                                 onUserMedia={() => initializeAR()}
                                 onUserMediaError={() => setWebCamError(true)}
+                                videoConstraints={{ ...videoConstraints }}
                             />
                             <canvas
                                 ref={canvasRef}
