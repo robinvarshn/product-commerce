@@ -37,7 +37,7 @@ const MediaGallery = ({ images, pdpLoading, setPdpLoaded }: MediaGalleryTypes): 
         if (!pdpLoading) {
             setTimeout(() => {
                 setLoading(false);
-            }, 500);
+            }, 1000);
         }
     }, [pdpLoading]);
 
