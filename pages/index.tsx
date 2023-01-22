@@ -1,17 +1,12 @@
 import '@layout/_homepage.scss';
+import { aemHeadlessClient, queries } from 'aemHeadless';
 import CardInfo from 'components/card-info';
 import FadeInSection from 'components/fading';
 import Seo from 'components/seo';
 import Teaser from 'components/teaser';
 import Text from 'components/text';
-import { GetServerSideProps, GetServerSidePropsContext } from 'next';
+import { GetStaticProps } from 'next';
 import React from 'react';
-import 'regenerator-runtime/runtime';
-import CardData from '.././sample/cardCategory.json';
-import FeatureData from '.././sample/cardFeatures.json';
-import FooterData from '.././sample/footer.json';
-import HeaderData from '.././sample/header.json';
-import TeaserData from '.././sample/homePage.json';
 
 const Home = ({ teaserData, cardData, featureData }: { [x: string]: any }): JSX.Element => {
     return (
@@ -59,16 +54,17 @@ const Home = ({ teaserData, cardData, featureData }: { [x: string]: any }): JSX.
     );
 };
 
-export const getServerSideProps: GetServerSideProps = async (
-    context: GetServerSidePropsContext,
-) => {
+export const getStaticProps: GetStaticProps = async () => {
+    let homePageJson = await aemHeadlessClient.runPersistedQuery(queries.homePage);
+    let { cardCategoryByPath, facilitiesByPath, footerByPath, headerByPath, teaserByPath } =
+        homePageJson?.data;
     return {
         props: {
-            headerData: HeaderData,
-            footerData: FooterData,
-            teaserData: TeaserData?.teaser,
-            cardData: CardData?.cardInfo,
-            featureData: FeatureData,
+            headerData: headerByPath?.item,
+            footerData: footerByPath?.item,
+            teaserData: teaserByPath?.item,
+            cardData: cardCategoryByPath?.item?.cardInfo,
+            featureData: facilitiesByPath?.item,
         },
     };
 };
