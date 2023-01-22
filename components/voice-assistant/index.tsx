@@ -3,7 +3,6 @@ import { NextRouter, useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
 import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition';
 import { ReactSVG } from 'react-svg';
-import 'regenerator-runtime/runtime';
 import { KeywordMapper, ResultSet } from './utility';
 import { VoiceAsistantTypes } from './voice-assistant';
 
@@ -43,7 +42,11 @@ const VoiceAssistant = ({
                 setTransDecision(true);
                 setVoiceWarn(noRes);
             } else {
-                router.push(`/product/${checkPrediction.category}/${checkPrediction.keyword}`);
+                if (checkPrediction.category === 'footwear') {
+                    window.location.href = `/product/${checkPrediction.category}/${checkPrediction.keyword}`;
+                } else {
+                    router.push(`/product/${checkPrediction.category}/${checkPrediction.keyword}`);
+                }
             }
         } else if (!listening && !transcript.length && isMicrophoneAvailable) {
             setTransDecision(true);

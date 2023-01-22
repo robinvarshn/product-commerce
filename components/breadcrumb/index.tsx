@@ -4,6 +4,10 @@ import React from 'react';
 import { BreadcrumbData, BreadcrumbTypes } from './breadcrumb';
 
 const Breadcrumb = ({ list }: BreadcrumbTypes): JSX.Element => {
+    const ishref = list?.filter((x) => x.isHref);
+    const anchorProps = {
+        ...(ishref.length && { target: '_parent' }),
+    };
     return (
         <div className="breadcrumb">
             <ul className="breadcrumb-list">
@@ -12,9 +16,13 @@ const Breadcrumb = ({ list }: BreadcrumbTypes): JSX.Element => {
                         return (
                             <li className="breadcrumb-item" key={index}>
                                 {index !== list.length - 1 ? (
-                                    <Link className="breadcrumb-trail" href={x.route}>
-                                        {x.routeName}
-                                    </Link>
+                                    <React.Fragment>
+                                        <Link href={x.route} legacyBehavior>
+                                            <a className="breadcrumb-trail" {...anchorProps}>
+                                                {x.routeName}
+                                            </a>
+                                        </Link>
+                                    </React.Fragment>
                                 ) : (
                                     <span className="breadcrumb-lead">{x.routeName}</span>
                                 )}

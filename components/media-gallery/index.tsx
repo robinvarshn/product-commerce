@@ -8,9 +8,10 @@ const MediaGalleryConfig = {
     mobileRendition: 767,
 };
 
-const MediaGallery = ({ images }: MediaGalleryTypes): JSX.Element => {
+const MediaGallery = ({ images, pdpLoading, setPdpLoaded }: MediaGalleryTypes): JSX.Element => {
     const [imagesData, setImagesData] = useState<any>([] as MediaImageObj[]);
     const [loading, setLoading] = useState<boolean>(true);
+    const [propsLoad, setPropsLoad] = useState<boolean>(true);
     const [windowWidth] = useWindowSize({ fps: 60 });
 
     const generateConfigs = (): void => {
@@ -25,7 +26,7 @@ const MediaGallery = ({ images }: MediaGalleryTypes): JSX.Element => {
         });
 
         setImagesData(_imageSet);
-        setLoading(false);
+        setPropsLoad(false);
     };
 
     useEffect(() => {
@@ -33,13 +34,15 @@ const MediaGallery = ({ images }: MediaGalleryTypes): JSX.Element => {
     }, []);
     return (
         <React.Fragment>
-            {!loading && (
+            {!propsLoad && (
                 <ImageGallery
                     items={imagesData}
                     showPlayButton={false}
                     showIndex={true}
-                    showBullets={true}
+                    onImageLoad={() => setPdpLoaded(false)}
                     showFullscreenButton={false}
+                    showBullets={!pdpLoading}
+                    showNav={!pdpLoading}
                     showThumbnails={windowWidth > MediaGalleryConfig.mobileRendition ?? false}
                     thumbnailPosition={
                         windowWidth > MediaGalleryConfig.mobileRendition ? 'left' : 'bottom'

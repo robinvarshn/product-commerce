@@ -1,5 +1,9 @@
+type ImageURL = {
+    _path: string;
+};
+
 export type TeaserProps = {
-    imageURL: string;
+    imageURL: ImageURL;
     fallBackURL: string;
     title: string;
 };

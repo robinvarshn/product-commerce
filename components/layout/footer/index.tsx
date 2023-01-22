@@ -1,10 +1,12 @@
 import '@styles/_footer.scss';
+import getConfig from 'next/config';
 import Image from 'next/legacy/image';
 import Link from 'next/link';
 import React from 'react';
 import { FooterProps } from './footer';
 
 const Footer = ({ footerData }: FooterProps): JSX.Element => {
+    const { publicRuntimeConfig } = getConfig();
     return (
         <React.Fragment>
             <footer>
@@ -14,7 +16,7 @@ const Footer = ({ footerData }: FooterProps): JSX.Element => {
                     </div>
                     <div className="footer__brand-logo">
                         <Image
-                            src={`${footerData?.brandLogo}`}
+                            src={`${publicRuntimeConfig.aemPublishUrl}${footerData?.brandLogo?._path}`}
                             alt={footerData?.copyRightContent}
                             layout="fill"
                         />

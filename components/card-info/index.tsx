@@ -50,4 +50,4 @@ const CardInfo = ({
     );
 };
 
-export default CardInfo;
+export default React.memo(CardInfo);

@@ -1,6 +1,7 @@
 import AccordionWrapper from 'components/accordion';
 import BingMaps from 'components/maps';
 import { InfoBox } from 'components/maps/maps';
+import MediaGallery from 'components/media-gallery';
 import { MediaGalleryTypes } from 'components/media-gallery/media-gallery';
 import ProductAccessories from 'components/product-accessories';
 import ProductInfo from 'components/product-info';
@@ -21,10 +22,6 @@ import type {
 
 import '@layout/_pdp.scss';
 import OfflineStoreWrapper from 'components/offline-stores';
-
-const MediaGallery = dynamic(() => import('components/media-gallery'), {
-    ssr: false,
-});
 
 const TryoutWrapper = dynamic(() => import('components/tryout'), {
     ssr: false,
@@ -145,11 +142,16 @@ const FAQComponent = ({ faqHeader, faqData }: FAQProps): JSX.Element => {
 };
 
 const PDPTemplate = ({ MediaGalleryContent, TabInfo, FAQData }: PDPTemplateProps): JSX.Element => {
+    const [pdpLoading, setPdpLoading] = useState<boolean>(true);
     return (
         <div className="pdp">
             <div className="pdp-data">
-                <div className="pdp-gallery">
-                    <MediaGalleryComponent images={MediaGalleryContent} />
+                <div className={`${pdpLoading && 'pdp-gallery-loading'} pdp-gallery`}>
+                    <MediaGalleryComponent
+                        pdpLoading={pdpLoading}
+                        setPdpLoaded={setPdpLoading}
+                        images={MediaGalleryContent}
+                    />
                 </div>
                 <div className="pdp-content">
                     <TabsComponent tabInfo={TabInfo} />

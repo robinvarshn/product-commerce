@@ -1,3 +1,8 @@
+type LogoContent = {
+    _path: string;
+};
+
 export type HeaderProps = {
-    headerLogo: string;
+    headerLogo: LogoContent;
+    isHref?: boolean;
 };

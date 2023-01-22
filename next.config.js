@@ -13,11 +13,12 @@ const path = require('path');
 const nextConfig = {
     useFileSystemPublicRoutes: true,
     images: {
-        domains: ['publish-p12756-e735552.adobeaemcloud.com', 'cdn.pixabay.com'],
+        domains: ['publish-p99610-e917545.adobeaemcloud.com'],
     },
     publicRuntimeConfig: {
         mapsApiKey: process.env.NEXT_MAPS_API_KEY,
         deepARKey: process.env.NEXT_DEEPAR_KEY,
+        aemPublishUrl: process.env.NEXT_AEM_HOST_PUBLISH_URI,
     },
     reactStrictMode: true,
     swcMinify: true,

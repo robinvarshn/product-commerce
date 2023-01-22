@@ -1,10 +1,12 @@
 import '@styles/_teaser.scss';
 import Text from 'components/text';
+import getConfig from 'next/config';
 import Image from 'next/image';
 import React from 'react';
 import { TeaserProps } from './teaser';
 
 const Teaser = ({ imageURL, fallBackURL, title }: TeaserProps): JSX.Element => {
+    const { publicRuntimeConfig } = getConfig();
     return (
         <React.Fragment>
             <div className={`teaser`}>
@@ -15,7 +17,7 @@ const Teaser = ({ imageURL, fallBackURL, title }: TeaserProps): JSX.Element => {
                     <div className="cmp-teaser__image">
                         {imageURL && (
                             <Image
-                                src={imageURL}
+                                src={`${publicRuntimeConfig.aemPublishUrl}${imageURL?._path}`}
                                 fill={true}
                                 alt={''}
                                 placeholder="blur"

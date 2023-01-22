@@ -3,7 +3,6 @@ import getConfig from 'next/config';
 import React, { useEffect, useRef, useState } from 'react';
 import { isIOS, isMobile } from 'react-device-detect';
 import Webcam from 'react-webcam';
-import 'regenerator-runtime/runtime';
 import DeepAR from './configs/deep';
 import { EFFECT, FMO, FTA, FTI, MDA, MDI, PE, WASM } from './configs/resources.js';
 
@@ -32,6 +31,9 @@ const TryoutWrapper = ({ title, camError }: { [x: string]: string }): JSX.Elemen
                         deepAR.setVideoElement(webcamRef?.current?.video, isMobile ? true : false);
                     });
                 },
+                onShutDown: function () {
+                    deepAR.shutdown();
+                },
             },
         });
     };
@@ -40,7 +42,11 @@ const TryoutWrapper = ({ title, camError }: { [x: string]: string }): JSX.Elemen
         //cleanup
         return () => {
             deepAR?.shutdown();
+            deepAR?.setOffscreenRenderingEnabled(false);
             deepAR?.stopVideo();
+            webcamRef.current?.stream?.getTracks().forEach((track) => {
+                track.stop();
+            });
         };
     }, []);
 

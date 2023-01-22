@@ -1,7 +1,7 @@
 import '@styles/_object-detection.scss';
 import type * as cocossd from '@tensorflow-models/coco-ssd';
 import { load } from '@tensorflow-models/coco-ssd/dist/index';
-import '@tensorflow/tfjs';
+import * as tf from '@tensorflow/tfjs';
 import { ResultSet } from 'components/voice-assistant/utility';
 import { NextRouter, useRouter } from 'next/router';
 import React, { useEffect, useRef, useState } from 'react';
@@ -39,6 +39,7 @@ const ObjectDetection = ({ title, subInfo, camError }: ObjectDetectionTypes): JS
             setTimeout(() => {
                 router.push(`/product/${resultSet.category}/${resultSet.keyword}`);
             }, RouteDelay);
+            tf.dispose();
         }
     };
 
@@ -60,7 +61,7 @@ const ObjectDetection = ({ title, subInfo, camError }: ObjectDetectionTypes): JS
     const initialCoco = async () => {
         const net: cocossd.ObjectDetection = await load();
         setInterval(() => {
-            detectObj(net);
+            !matchRef.current && detectObj(net);
         }, 10);
     };
 
@@ -69,7 +70,9 @@ const ObjectDetection = ({ title, subInfo, camError }: ObjectDetectionTypes): JS
     };
 
     useEffect(() => {
-        initialCoco();
+        tf.ready().then(() => {
+            initialCoco();
+        });
     }, []);
 
     return (
@@ -91,7 +94,12 @@ const ObjectDetection = ({ title, subInfo, camError }: ObjectDetectionTypes): JS
                                     onUserMediaError={() => setWebCamError(true)}
                                     videoConstraints={{ ...videoConstraints }}
                                 />
-                                <canvas ref={canvasRef} className="object-detection__canvas" />
+                                <canvas
+                                    height={480}
+                                    width={640}
+                                    ref={canvasRef}
+                                    className="object-detection__canvas"
+                                />
                             </div>
                         </div>
                         <div className="object-detection__disc">
@@ -104,4 +112,4 @@ const ObjectDetection = ({ title, subInfo, camError }: ObjectDetectionTypes): JS
     );
 };
 
-export default ObjectDetection;
+export default React.memo(ObjectDetection);
