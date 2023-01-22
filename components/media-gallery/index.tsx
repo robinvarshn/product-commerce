@@ -37,7 +37,7 @@ const MediaGallery = ({ images, pdpLoading, setPdpLoaded }: MediaGalleryTypes): 
         if (!pdpLoading) {
             setTimeout(() => {
                 setLoading(false);
-            }, 850);
+            }, 500);
         }
     }, [pdpLoading]);
 
@@ -52,6 +52,7 @@ const MediaGallery = ({ images, pdpLoading, setPdpLoaded }: MediaGalleryTypes): 
                     showFullscreenButton={false}
                     showBullets={!loading}
                     showNav={!loading}
+                    showIndex={!loading}
                     showThumbnails={windowWidth > MediaGalleryConfig.mobileRendition ?? false}
                     thumbnailPosition={
                         windowWidth > MediaGalleryConfig.mobileRendition ? 'left' : 'bottom'
