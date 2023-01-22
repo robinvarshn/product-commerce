@@ -10,7 +10,7 @@ const KeywordMapper = (prediction: string): ResultSet => {
 
     Dataset.forEach((x) => {
         if (prediction.toLowerCase().indexOf(x.keyword) > -1) {
-            result['keyword'] = x.keyword;
+            result['keyword'] = x.keyword === 'cell phone' ? 'iphone' : x.keyword;
             result['category'] = x.category;
             return;
         }

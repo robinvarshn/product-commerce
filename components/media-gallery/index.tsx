@@ -32,6 +32,15 @@ const MediaGallery = ({ images, pdpLoading, setPdpLoaded }: MediaGalleryTypes): 
     useEffect(() => {
         generateConfigs();
     }, []);
+
+    useEffect(() => {
+        if (!pdpLoading) {
+            setTimeout(() => {
+                setLoading(false);
+            }, 150);
+        }
+    }, [pdpLoading]);
+
     return (
         <React.Fragment>
             {!propsLoad && (
@@ -41,8 +50,8 @@ const MediaGallery = ({ images, pdpLoading, setPdpLoaded }: MediaGalleryTypes): 
                     showIndex={true}
                     onImageLoad={() => setPdpLoaded(false)}
                     showFullscreenButton={false}
-                    showBullets={!pdpLoading}
-                    showNav={!pdpLoading}
+                    showBullets={!loading}
+                    showNav={!loading}
                     showThumbnails={windowWidth > MediaGalleryConfig.mobileRendition ?? false}
                     thumbnailPosition={
                         windowWidth > MediaGalleryConfig.mobileRendition ? 'left' : 'bottom'

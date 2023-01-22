@@ -1,5 +1,5 @@
 import type { BreadcrumbData } from 'components/breadcrumb/breadcrumb';
-import create from 'zustand';
+import { create } from 'zustand';
 
 export type BreadcrumbStore = {
     breadcrumbRoute: BreadcrumbData[];

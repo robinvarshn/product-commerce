@@ -22,6 +22,7 @@ const Header = ({ headerLogo, isHref }: HeaderProps): JSX.Element => {
                                         className="header__image"
                                         src={`${publicRuntimeConfig.aemPublishUrl}${headerLogo._path}`}
                                         layout="fill"
+                                        priority
                                         alt={''}
                                     />
                                 </a>

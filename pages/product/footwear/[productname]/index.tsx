@@ -6,24 +6,28 @@ import Seo from 'components/seo';
 import { mapImagesForGallery } from 'helpers/productImageHelper';
 import { breadcrumbStore } from 'helpers/routeHelper';
 import { capitalizeFirst } from 'helpers/stringHelper';
-import { GetServerSideProps, GetServerSidePropsContext } from 'next';
+import { GetStaticProps } from 'next';
+import { useRouter } from 'next/router';
 import React, { useEffect } from 'react';
 
-const FootwearCategory = ({ productname, ...props }: { productname: string }) => {
+const FootwearCategory = (props: any) => {
     const { images, faqData, tabInfo }: { [x: string]: any } = props;
     const imagesMap: MediaImageObj[] = mapImagesForGallery(images);
+    const router = useRouter();
     const setRoute = breadcrumbStore((state) => state.setRoute);
 
     useEffect(() => {
-        setRoute({
-            route: '/',
-            routeName: capitalizeFirst(productname),
-            isHref: true,
-        });
-    }, []);
+        if (router.query.productname) {
+            setRoute({
+                route: '/',
+                routeName: capitalizeFirst(router.query.productname),
+                isHref: true,
+            });
+        }
+    }, [router.query]);
     return (
         <React.Fragment>
-            {<Seo pageTitle={capitalizeFirst(productname)} />}
+            {<Seo pageTitle={capitalizeFirst(router?.query?.productname)} />}
             <section>
                 <PDPTemplate MediaGalleryContent={imagesMap} FAQData={faqData} TabInfo={tabInfo} />
             </section>
@@ -36,12 +40,10 @@ FootwearCategory.getLayout = () => {
     return <Breadcrumb list={breadCrumbList} />;
 };
 
-export const getServerSideProps: GetServerSideProps = async (
-    context: GetServerSidePropsContext,
-) => {
-    let productName = context.query?.productname;
-    let imagePath = `${process.env.NEXT_AEM_PRODUCT_PATH}footwear/${productName}/product-images`;
-    let infoPath = `${process.env.NEXT_AEM_PRODUCT_PATH}footwear/${productName}/tabinfo`;
+export const getStaticProps: GetStaticProps = async (context: any) => {
+    const { params }: any = context;
+    let imagePath = `${process.env.NEXT_AEM_PRODUCT_PATH}footwear/${params?.productname}/product-images`;
+    let infoPath = `${process.env.NEXT_AEM_PRODUCT_PATH}footwear/${params?.productname}/tabinfo`;
     let productPageJSON = await aemHeadlessClient.runPersistedQuery(queries.productDetail, {
         imagePath,
         infoPath,
@@ -55,9 +57,15 @@ export const getServerSideProps: GetServerSideProps = async (
             images: productMediaGalleryList?.items[0]?.original,
             tabInfo: productInfoList?.items[0]?.tabInfo?.tabInfo,
             faqData: accordionByPath?.item?.faq?.faq,
-            productname: productName,
         },
     };
 };
+
+export function getStaticPaths() {
+    return {
+        paths: [{ params: { productname: 'shoes' } }],
+        fallback: 'blocking',
+    };
+}
 
 export default FootwearCategory;
