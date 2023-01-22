@@ -47,7 +47,6 @@ const MediaGallery = ({ images, pdpLoading, setPdpLoaded }: MediaGalleryTypes): 
                 <ImageGallery
                     items={imagesData}
                     showPlayButton={false}
-                    showIndex={true}
                     onImageLoad={() => setPdpLoaded(false)}
                     showFullscreenButton={false}
                     showBullets={!loading}
