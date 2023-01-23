@@ -69,7 +69,7 @@
         "@next/font": "^13.1.1",
         "@react-hook/window-size": "^3.1.1",
         "@tensorflow-models/coco-ssd": "^2.2.2",
-        "@tensorflow/tfjs": "^2.4.0",
+        "@tensorflow/tfjs": "^4.2.0",
         "@types/fs-extra": "^9.0.13",
         "@types/node": "18.11.18",
         "@types/react": "18.0.26",
