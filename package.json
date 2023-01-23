@@ -9,10 +9,10 @@
         "lint": "next lint",
         "lint:css": "stylelint '**/*.scss'",
         "fix:css": "stylelint --fix '**/*.{css,scss}'",
-        "format": "prettier --write '**/*.{css,scss,tsx,ts,jsx,js,json}'",
-        "generate": "npx graphql-codegen --config generateschema.yml"
+        "format": "prettier --write '**/*.{css,scss,tsx,ts,jsx,js,json}'"
     },
     "dependencies": {
+        "@apollo/client": "^3.7.4",
         "@graphql-codegen/cli": "^1.21.6",
         "@graphql-codegen/typescript": "^1.22.4",
         "@graphql-codegen/typescript-operations": "^1.18.3",
@@ -40,6 +40,7 @@
         "react-accessible-accordion": "^5.0.0",
         "react-device-detect": "^2.2.2",
         "react-dom": "18.2.0",
+        "react-hook-form": "^7.42.1",
         "react-image-gallery": "^1.2.11",
         "react-modal": "^3.16.1",
         "react-speech-recognition": "^3.10.0",

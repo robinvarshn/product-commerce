@@ -64,6 +64,7 @@ const TabsComponent = ({ tabInfo }: TabsComponentProps): JSX.Element => {
 };
 
 const StoreComponent = ({ storeData, locationData }: StoreProps): JSX.Element => {
+    console.log(storeData);
     return (
         <React.Fragment>
             <OfflineStoreWrapper {...storeData} />
