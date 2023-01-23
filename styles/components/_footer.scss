@@ -8,6 +8,7 @@
     flex-direction: column;
     margin-top: 7.5rem;
     padding: 1.75rem;
+    width: 100%;
 
     @media (min-width: $media-phone-breakpoint) {
         flex-direction: row;
