@@ -2,7 +2,7 @@ import { ApolloProvider } from '@apollo/client';
 import { loginHandler, useCustomerLogin } from 'components/cart/useCustomerLogin';
 import { cartIdGenerationHandler, useGetCartId } from 'components/cart/useGetCartId';
 import Footer from 'components/layout/footer';
-import { FooterData, FooterProps } from 'components/layout/footer/footer';
+import { FooterData } from 'components/layout/footer/footer';
 import Header from 'components/layout/header';
 import { HeaderProps } from 'components/layout/header/header';
 import type { NextPage } from 'next';
@@ -44,6 +44,8 @@ function AppLayout({ headerData, footerData, children }: LayoutProps) {
     // setup the cart id if not present
     useEffect(() => {
         !sessionStorage.getItem('token') && handleClientRequest();
+        window.addEventListener('refresh', handleClientRequest);
+        return () => window.removeEventListener('refresh', handleClientRequest);
     }, []);
 
     return (

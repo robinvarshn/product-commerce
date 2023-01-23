@@ -17,11 +17,35 @@
     &__stores {
         padding: 0 2rem;
     }
+
     .button-addtocart {
         background-color: green;
         color: white;
+        display: flex;
+        gap: 1.25rem;
+        align-items: center;
         padding: 1rem 3.4rem;
         border-radius: 3rem;
+        border: none;
         font-size: $u-heading-5;
+    }
+
+    .addcart-loading {
+        align-self: center;
+        border: 6px solid #f3f3f3;
+        border-radius: 50%;
+        border-top: 6px solid transparent;
+        width: 2.8rem;
+        height: 2.8rem;
+        animation: spin 1s linear infinite;
+    }
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
     }
 }
