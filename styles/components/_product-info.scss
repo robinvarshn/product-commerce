@@ -65,10 +65,9 @@
     }
 
     &__tagitem {
-        background-color: $color-global-black;
         border: 2px solid $color-global-black;
         border-radius: 3rem;
-        color: $color-global-white;
+        color: $color-global-black;
         display: inline-block;
         font-size: $u-heading-6;
         font-weight: bold;

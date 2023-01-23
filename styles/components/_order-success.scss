@@ -1,0 +1,22 @@
+@import '../globalImports.scss';
+
+.order-success {
+    width: 86rem;
+    height: 50vh;
+    position: relative;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding: 1rem;
+
+    h1 {
+        color: green;
+    }
+
+    h3 {
+        span {
+            color: #ff6161;
+        }
+    }
+}

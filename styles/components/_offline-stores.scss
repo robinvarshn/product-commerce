@@ -17,4 +17,11 @@
     &__stores {
         padding: 0 2rem;
     }
+    .button-addtocart {
+        background-color: green;
+        color: white;
+        padding: 1rem 3.4rem;
+        border-radius: 3rem;
+        font-size: $u-heading-5;
+    }
 }

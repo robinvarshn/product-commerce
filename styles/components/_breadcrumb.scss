@@ -4,6 +4,7 @@
     &-list {
         background-color: $color-global-grey-5;
         list-style: none;
+        display: flex;
         padding: 1rem 2rem;
 
         @media (min-width: $media-phone-breakpoint) {
@@ -19,10 +20,46 @@
             font-size: $u-heading-5;
         }
 
+        &__cart-link {
+            display: flex;
+        }
+
         & + &::before {
             color: $color-global-black;
             content: '/\00a0';
             padding: 1rem;
+        }
+
+        &__cart {
+            margin-left: auto;
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        &_carticon {
+            display: inline-block;
+            position: relative;
+            padding-right: 10px;
+            svg {
+                width: 18px;
+                margin-top: 10px;
+            }
+        }
+        &_cartcount {
+            margin-left: 5px;
+            background-color: #ff6161;
+            border-radius: 10px;
+            height: 24px;
+            font-size: 17px;
+            margin-top: -9px;
+            z-index: 990;
+            position: absolute;
+        }
+
+        &_carttext {
+            align-self: center;
+            font-weight: 500;
+            font-size: $u-heading-5;
         }
     }
 

@@ -1,0 +1,102 @@
+@import '../globalImports.scss';
+
+.shipping-container {
+    padding: 2rem 1rem;
+
+    @media (min-width: $media-phone-breakpoint) {
+        padding: 3rem 13vw;
+    }
+    h1 {
+        color: #2954ff;
+        margin-bottom: 20px;
+        font-size: 22px;
+    }
+    padding: 0 20px;
+    &__addresscontainer {
+        display: flex;
+        gap: 4rem;
+        justify-content: center;
+        flex-direction: column;
+        @media (min-width: $media-phone-breakpoint) {
+            flex-direction: row;
+        }
+    }
+
+    &__addresswrapper {
+        border: 1px solid #7393b3;
+        padding: 10px 25px !important;
+    }
+
+    &__address {
+        flex: 1;
+    }
+
+    &__address,
+    &__billing-info,
+    &__card-payment {
+        padding: 0;
+        margin: 0;
+        list-style: none;
+        li {
+            padding-left: 20px;
+            padding-bottom: 10px;
+            label {
+                display: flex;
+                flex-direction: column;
+                margin: 0.5rem 0;
+                
+                @media (min-width: $media-phone-breakpoint) {
+                    align-items: center;
+                    flex-direction: row;
+                }
+                span {
+                    flex: 0 0 35%;
+                    color: #888888;
+                }
+                input,select {
+                    flex: 1;
+                    padding: 1rem;
+                    border: 2px solid #7eafe3;
+                    border-radius: 0.5rem;
+                }
+            }
+        }
+    }
+
+    &__billing-info {    
+        border: 1px solid #7393b3;
+        padding: 10px 25px;
+        flex: 1;
+        h1 {
+            color: #7393b3;
+        }
+    }
+    &__billing-check {
+        width: 100%;
+        display: flex;
+        padding: 20px 0;
+        label {
+            font-weight: bold;
+            font-size: 10px;
+        }
+    }
+    &__card-payment {
+        clear: both;
+        background: #d3d3d3;
+        border-radius: 20px;
+        margin: 2rem 0;
+        padding: 1rem 2.5rem;
+        h2 {
+            text-align: center;
+            margin-top: 20px;
+            color: #36454f;
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+    }
+    .hide {
+        display: none;
+    }
+}
