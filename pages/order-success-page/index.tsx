@@ -16,8 +16,10 @@ const OrderSuccessPage = () => {
         setRoute({
             route: '/',
             routeName: 'OrderSuccessPage',
+            isHref: true,
         });
     }, []);
+
     return (
         <React.Fragment>
             <ClientOnly>
@@ -37,7 +39,7 @@ export const getStaticProps: GetStaticProps = async () => {
     let { footerByPath, headerByPath } = homePageJson?.data;
     return {
         props: {
-            headerData: headerByPath?.item,
+            headerData: { ...headerByPath?.item, isHref: true },
             footerData: footerByPath?.item,
         },
     };
