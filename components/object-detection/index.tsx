@@ -2,6 +2,7 @@ import '@styles/_object-detection.scss';
 import type * as cocossd from '@tensorflow-models/coco-ssd';
 import { load } from '@tensorflow-models/coco-ssd/dist/index';
 import * as tf from '@tensorflow/tfjs';
+import '@tensorflow/tfjs-converter';
 import { ResultSet } from 'components/voice-assistant/utility';
 import { NextRouter, useRouter } from 'next/router';
 import React, { useEffect, useRef, useState } from 'react';

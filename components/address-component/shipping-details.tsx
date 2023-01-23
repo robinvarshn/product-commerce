@@ -1,6 +1,7 @@
 import '@styles/_default.scss';
 import '@styles/_shipping.scss';
 import { useRouter } from 'next/router';
+import { useState } from 'react';
 import { useCheckoutFlow } from '../cart/useCheckoutFlow';
 import AddressComponent from './address-component';
 
@@ -19,6 +20,7 @@ const defaultValues = {
 };
 
 const ShippingDetails = () => {
+    const [isShipping, setShipping] = useState<boolean>(false);
     const checkFlowFn = useCheckoutFlow();
     const router = useRouter();
     return (
@@ -30,6 +32,7 @@ const ShippingDetails = () => {
                         containerType="shipping-container__address shipping-container__addresswrapper"
                         defaultValues={defaultValues}
                         submitHandler={(data: any) => {
+                            setShipping(true);
                             console.log('shipping address data...');
                             console.log(data);
                             checkFlowFn((orderNum: any) => {
@@ -38,9 +41,9 @@ const ShippingDetails = () => {
                                     //  sessionStorage.clear();
                                     sessionStorage.removeItem('cartId');
                                     sessionStorage.removeItem('token');
-
                                     sessionStorage.setItem('orderNum', JSON.stringify(orderNum));
                                     router.push('/order-success-page');
+                                    window.dispatchEvent(new Event('refresh'));
                                 }
                             }, data);
                             // router.push("/shipping-details-page");
@@ -85,8 +88,9 @@ const ShippingDetails = () => {
                         </li>
                     </ul>
                 </div>
-                <button type="submit" form="shippingAddress" className="button">
-                    Continue
+                <button type="submit" form="shippingAddress" className="button c-btn">
+                    <span className="c-text">Continue</span>
+                    {isShipping && <span className="c-loading"></span>}
                 </button>
             </div>
         </>

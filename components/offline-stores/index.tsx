@@ -2,10 +2,12 @@ import '@styles/_default.scss';
 import '@styles/_offline-stores.scss';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
+import { useState } from 'react';
 import { addToCartHandler, useAddProductToCart } from '../cart/useAddProductToCart';
 import { OfflineStoreProps } from './offline-stores';
 
 const OfflineStoreWrapper = ({ title, vendors, sku }: OfflineStoreProps): JSX.Element => {
+    const [cartLoading, setCartLoading] = useState<boolean>(false);
     const router = useRouter();
     const addProductToCartFn = useAddProductToCart();
     return (
@@ -19,8 +21,9 @@ const OfflineStoreWrapper = ({ title, vendors, sku }: OfflineStoreProps): JSX.El
                 ))}
             </ul>
             <button
-                className="button-addtocart"
+                className={`button-addtocart`}
                 onClick={async () => {
+                    setCartLoading(true);
                     const addToCartData =
                         addProductToCartFn && (await addToCartHandler(addProductToCartFn, sku));
                     if (addToCartData) {
@@ -28,7 +31,8 @@ const OfflineStoreWrapper = ({ title, vendors, sku }: OfflineStoreProps): JSX.El
                     }
                 }}
             >
-                Add to cart
+                <span className="addcart-text">Add To Cart</span>
+                {cartLoading && <span className="addcart-loading"></span>}
             </button>
         </div>
     );
