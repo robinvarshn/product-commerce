@@ -13,4 +13,4 @@ jobs:
           token: "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"
           repository: robinatwork1999/product-commerce
           event-type: trigger
-          client-payload: '{"environment": "${"file-to-read":"robin"}'
+          client-payload: '{"environment": "${"brandName":"robin"}'
