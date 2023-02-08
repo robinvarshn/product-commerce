@@ -10,7 +10,7 @@ jobs:
       - name: Repository Dispatch
         uses: peter-evans/repository-dispatch@v1.1.3
         with:
-          token: "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"
+          token: "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"
           repository: robinatwork1999/product-commerce
           event-type: trigger
           client-payload: '{"brandName": "robin"}'
