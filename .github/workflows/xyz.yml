@@ -7,13 +7,6 @@ jobs:
     name: start axe scan
     runs-on: ubuntu-latest
     steps:
-      - name: Repository Dispatch
-        uses: peter-evans/repository-dispatch@v1.1.3
-        with:
-          token: ${{ secrets.TOKEN }}
-          repository: robinatwork1999/product-commerce
-          event-type: trigger
-          client-payload: '{"brandName": "robin"}'
       - name: Repository Dispatchs    
         uses: convictional/trigger-workflow-and-wait@v1.6.1
         with:
