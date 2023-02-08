@@ -14,5 +14,4 @@ jobs:
           repo: product-commerce
           github_token: ${{ secrets.TOKEN }}
           workflow_file_name: cc.yml
-          client_payload: '{"brandName": "robin"}'
           wait_workflow: true
