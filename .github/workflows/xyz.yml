@@ -14,3 +14,10 @@ jobs:
           repository: robinatwork1999/product-commerce
           event-type: trigger
           client-payload: '{"brandName": "robin"}'
+      - name: Invoke workflow in another repo with inputs
+        uses: aurelien-baudet/workflow-dispatch@v2
+        with:
+          workflow: Theme-Generator - Agency-Dispatch
+          repo: robinatwork1999/product-commerce
+          token: ${{ secrets.TOKEN }}
+          inputs: '{ "message": "blah blah", "debug": true }'
