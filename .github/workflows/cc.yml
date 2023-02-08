@@ -12,5 +12,5 @@ jobs:
           node-version: 18
       - name: Setup configurations
         run: >
-          eho "GITHUB_ORG=AEMCS" >> $GITHUB_ENV
+          echo "GITHUB_ORG=AEMCS" >> $GITHUB_ENV
           echo "GITHUB_ACTOR=${{ github.actor }}" >> $GITHUB_ENV
