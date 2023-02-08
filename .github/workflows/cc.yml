@@ -14,7 +14,3 @@ jobs:
         run: >
           echo "GITHUB_ORG=AEMCS" >> $GITHUB_ENV
           echo "GITHUB_ACTOR=${{ github.actor }}" >> $GITHUB_ENV
-          echo "THEME_NAME=${{ github.event.client_payload.brandName }}" >> $GITHUB_ENV
-          git config --global user.name "${{ github.actor }}"
-          git config --global user.email "${{ github.actor
-          }}@users.noreply.github.com"
