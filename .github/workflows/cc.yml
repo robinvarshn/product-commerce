@@ -1,8 +1,7 @@
 name: Theme-Generator - Agency-Dispatch
 'on':
   repository_dispatch:
-    types: [trigger]
-    name: '123456'
+
 jobs:
   generate:
     runs-on: ubuntu-latest
