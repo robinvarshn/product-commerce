@@ -21,4 +21,4 @@ jobs:
           repo: robinatwork1999/product-commerce
           token: ${{ secrets.TOKEN }}
           inputs: '{ "message": "blah blah", "debug": true }'
-          wait-for-completion: true
+          wait-for-completion: 'true'
