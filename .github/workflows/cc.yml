@@ -1,21 +1,16 @@
-name: Theme-Generator - Agency-Dispatch
-'on':
-  repository_dispatch:
-    types: [trigger]
+name: axe-scan-dispatch
+on:
+  workflow_dispatch:
+
 jobs:
-  generate:
+  execute-axe-scan:
+    name: start axe scan
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
+      - name: Repository Dispatch
+        uses: peter-evans/repository-dispatch@v1.1.3
         with:
-          node-version: 18
-      - name: Setup configurations
-        run: >
-          echo "GITHUB_ORG=AEMCS" >> $GITHUB_ENV
-          echo "GITHUB_TOKEN=${{ secrets.PLATFORM_TOKEN }}" >> $GITHUB_ENV
-          echo "GITHUB_ACTOR=${{ github.actor }}" >> $GITHUB_ENV
-          echo "THEME_NAME=${{ github.event.client_payload.brandName }}" >> $GITHUB_ENV
-          git config --global user.name "${{ github.actor }}"
-          git config --global user.email "${{ github.actor
-          }}@users.noreply.github.com"
+          token: ${{ secrets.REPO_ACCESS_TOKEN }}
+          repository: robinatwork1999/product-commerce
+          event-type: trigger
+          client-payload: '{"environment": "${"file-to-read":"robin"}'
