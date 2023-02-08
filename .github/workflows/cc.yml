@@ -1,6 +1,6 @@
 name: Theme-Generator - Agency-Dispatch
 'on':
-  repository_dispatch:
+  workflow_dispatch:
 
 jobs:
   generate:
