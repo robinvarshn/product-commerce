@@ -1,6 +1,11 @@
 name: Theme-Generator - Agency-Dispatch
 'on':
   workflow_dispatch:
+    inputs:
+      emailid:
+        required: true
+        type: text
+        description: Email ID for Notification
 
 jobs:
   generate:
@@ -14,3 +19,4 @@ jobs:
         run: >
           echo "GITHUB_ORG=AEMCS" >> $GITHUB_ENV
           echo "GITHUB_ACTOR=${{ github.actor }}" >> $GITHUB_ENV
+          echo "GITHUB_INPUT=${{ github.event.inputs.emailid }}"
